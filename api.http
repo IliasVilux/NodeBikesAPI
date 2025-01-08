@@ -19,10 +19,13 @@ Content-Type: application/json
     "engine_capacity": 689
 }
 
+### Eliminar una moto
+DELETE http://localhost:3000/motos/b3f5c8a3d7f9e01
+
 ### Actualizar una moto
 PATCH http://localhost:3000/motos/b3f5c8a3d7f9e01
 Content-Type: application/json
 
 {
-    "year": 2023
+    "year": 2022
 }
