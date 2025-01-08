@@ -1,7 +1,10 @@
 import crypto from 'node:crypto';
 import express from 'express';
-import bikes from './bikes.json' assert { type: 'json' };
+import { createRequire } from 'node:module';
 import { validateBike, validatePartialBike } from './schemes/bikes.mjs';
+
+const require = createRequire(import.meta.url);
+const bikes = require('./bikes.json');
 
 const app = express();
 app.use(express.json());
