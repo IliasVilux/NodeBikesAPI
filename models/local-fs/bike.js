@@ -2,7 +2,7 @@ import { createRequire } from 'node:module';
 import { randomUUID } from "node:crypto";
 
 const require = createRequire(import.meta.url);
-const bikes = require('../bikes.json');
+const bikes = require('../../bikes.json');
 
 export class BikeModel {
     static async getAll({ marca }) {
