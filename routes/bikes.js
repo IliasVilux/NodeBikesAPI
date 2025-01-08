@@ -1,20 +1,13 @@
-import crypto from 'node:crypto';
-import express from 'express';
+import { Router } from "express";
+import { randomUUID } from "node:crypto";
 import { createRequire } from 'node:module';
-import { validateBike, validatePartialBike } from './schemes/bikes.mjs';
+import { validateBike, validatePartialBike } from "../schemes/bikes.js";
 
 const require = createRequire(import.meta.url);
-const bikes = require('./bikes.json');
+const bikes = require('../bikes.json');
+export const bikesRouter = Router();
 
-const app = express();
-app.use(express.json());
-app.disable('x-powered-by');
-
-app.get('/', (req, res) => {
-    res.json({ message: 'Hello World!' });
-})
-
-app.get('/motos', (req, res) => {
+bikesRouter.get('/', (req, res) => {
     const { marca } = req.query;
 
     if (marca) {
@@ -24,17 +17,17 @@ app.get('/motos', (req, res) => {
         return res.json(filteredBikes);
     }
     res.json(bikes);
-})
+});
 
-app.get('/motos/:id', (req, res) => {
+bikesRouter.get('/:id', (req, res) => {
     const { id } = req.params;
 
     const bike = bikes.find((bike) => bike.id === id);
     if (bike) return res.json(bike);
     res.status(404).json({ message: 'No se ha encontrado esta moto.' });
-})
+});
 
-app.post('/motos', (req, res) => {
+bikesRouter.post('/', (req, res) => {
     const result = validateBike(req.body);
 
     if (result.error) {
@@ -42,15 +35,27 @@ app.post('/motos', (req, res) => {
     }
 
     const newBike = {
-        id: crypto.randomUUID(),
+        id: randomUUID(),
         ...result.data
     }
     bikes.push(newBike);
 
     res.status(201).json(newBike);
-})
+});
 
-app.patch('/motos/:id', (req, res) => {
+bikesRouter.delete('/:id', (req, res) => {
+    const { id } = req.params;
+    const bikeIndex = bikes.findIndex(bike => bike.id === id);
+
+    if (bikeIndex === -1) {
+        return res.status(404).json({ message: 'No se ha encontrado esta moto.' });
+    }
+
+    bikes.splice(bikeIndex, 1);
+    res.json({ message: 'Moto eliminada correctamente.' });
+});
+
+bikesRouter.patch('/:id', (req, res) => {
     const result = validatePartialBike(req.body);
 
     if (result.error) {
@@ -71,10 +76,4 @@ app.patch('/motos/:id', (req, res) => {
     bikes[bikeIndex] = updateBike;
 
     return res.json(updateBike);
-})
-
-const PORT = process.env.PORT ?? 3000;
-
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-})
+});
