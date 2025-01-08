@@ -1,4 +1,4 @@
-import { BikeModel } from "../models/bike.js";
+import { BikeModel } from "../models/mysql/bike.js";
 import { validateBike, validatePartialBike } from "../schemes/bikes.js";
 
 export class BikeController {
