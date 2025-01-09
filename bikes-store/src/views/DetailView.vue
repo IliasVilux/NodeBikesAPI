@@ -13,7 +13,7 @@ const error = ref(null)
 const fetchData = async () => {
   loading.value = true
   try {
-    const response = await axios.get(`http://localhost:3000/motos/${route.params.id}`)
+    const response = await axios.get(`${import.meta.env.VITE_API_URL}/${route.params.id}`)
     bike.value = response.data
   } catch (err) {
     error.value = err
