@@ -29,3 +29,5 @@ build/
 
 # Coverage directory for code coverage reports
 coverage/
+
+*.http
