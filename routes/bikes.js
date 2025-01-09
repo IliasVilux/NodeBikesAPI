@@ -1,9 +1,9 @@
 import { Router } from "express";
 import { BikeController } from "../controllers/bikes.js";
 
-export const createBikeRouter = ({ BikeModel }) => {
+export const createBikeRouter = ({ bikeModel }) => {
     const bikesRouter = Router();
-    const bikeController = new BikeController({ bikeModel: BikeModel });
+    const bikeController = new BikeController({ bikeModel });
     
     bikesRouter.get('/', bikeController.getAll);
     bikesRouter.post('/', bikeController.create);
