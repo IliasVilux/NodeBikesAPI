@@ -1,38 +1,41 @@
-import { BikeModel } from "../models/mysql/bike.js";
 import { validateBike, validatePartialBike } from "../schemes/bikes.js";
 
 export class BikeController {
-    static async getAll(req, res) {
+    constructor({ BikeModel }) {
+        this.BikeModel = BikeModel;
+    }
+
+    getAll = async (req, res) => {
         const { marca } = req.query;
-        const bikes = await BikeModel.getAll({ marca });
+        const bikes = await this.BikeModel.getAll({ marca });
         res.json(bikes);
     }
 
-    static async getById(req, res) {
+    getById = async (req, res) => {
         const { id } = req.params;
-        const bike = await BikeModel.getById({ id });
+        const bike = await this.BikeModel.getById({ id });
 
         if (bike) return res.json(bike);
 
         res.status(404).json({ message: 'No se ha encontrado esta moto.' });
     }
 
-    static async create(req, res) {
+    create = async (req, res) => {
         const result = validateBike(req.body);
 
         if (result.error) {
             return res.status(422).json({ error: JSON.parse(result.error.message) });
         }
 
-        const newBike = await BikeModel.create({ input: result.data });
+        const newBike = await this.BikeModel.create({ input: result.data });
 
         res.status(201).json(newBike);
     }
 
-    static async delete(req, res) {
+    delete = async (req, res) => {
         const { id } = req.params;
 
-        const result = await BikeModel.delete({ id });
+        const result = await this.BikeModel.delete({ id });
 
         if (!result) {
             return res.status(404).json({ message: 'No se ha encontrado esta moto.' });
@@ -41,7 +44,7 @@ export class BikeController {
         res.json({ message: 'Moto eliminada correctamente.' });
     }
 
-    static async update(req, res) {
+    update = async (req, res) => {
         const result = validatePartialBike(req.body);
 
         if (result.error) {
@@ -49,7 +52,7 @@ export class BikeController {
         }
 
         const { id } = req.params;
-        const updateBike = await BikeModel.update({ id, input: result.data });
+        const updateBike = await this.BikeModel.update({ id, input: result.data });
 
         if (!updateBike) {
             return res.status(404).json({ message: 'No se ha encontrado esta moto.' });

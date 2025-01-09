@@ -1,14 +1,26 @@
 import mysql from 'mysql2/promise';
+import dotenv from 'dotenv';
 
-const config = {
+dotenv.config();
+
+// Configuración por defecto
+const DEFAULT_CONFIG = {
     host: 'localhost',
     user: 'root',
     port: 3306,
     password: '',
     database: 'bikesdb'
-}
+};
 
-const connection = await mysql.createConnection(config);
+const connectionString = {
+    host: process.env.DB_HOST || DEFAULT_CONFIG.host,
+    user: process.env.DB_USER || DEFAULT_CONFIG.user,
+    port: process.env.DB_PORT || DEFAULT_CONFIG.port,
+    password: process.env.DB_PASSWORD || DEFAULT_CONFIG.password,
+    database: process.env.DB_NAME || DEFAULT_CONFIG.database
+};
+
+const connection = await mysql.createConnection(connectionString);
 
 export class BikeModel {
     static async getAll({ marca }) {
