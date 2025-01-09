@@ -1,3 +1,4 @@
+import cors from 'cors';
 import express, { json } from 'express';
 import { createBikeRouter } from './routes/bikes.js';
 import 'dotenv/config';
@@ -5,6 +6,7 @@ import 'dotenv/config';
 export const createApp = ({ bikeModel }) => {
     const app = express();
     app.use(json());
+    app.use(cors());
     app.disable('x-powered-by');
     
     app.use('/motos', createBikeRouter({ bikeModel }));
