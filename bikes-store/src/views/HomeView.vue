@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import axios from 'axios'
 import { onMounted } from 'vue'
+import { RouterLink } from 'vue-router'
 
 const bikes = ref([])
 const loading = ref(false)
@@ -27,7 +28,9 @@ onMounted(fetchData)
     <div v-else-if="error">Error: {{ error.message }}</div>
     <ul v-else>
     <li v-for="bike in bikes" :key="bike.id">
-        {{ bike }}
+        <RouterLink :to="{ name: 'detail', params: { id: bike.id } }">
+        {{ bike.name }}
+        </RouterLink>
     </li>
     </ul>
 </template>
