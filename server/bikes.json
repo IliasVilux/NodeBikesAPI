@@ -4,7 +4,7 @@
       "name": "YZF-R1",
       "year": 2023,
       "brand": "Yamaha",
-      "image": "https://example.com/images/yamaha_r1.jpg",
+      "poster": "https://example.com/images/yamaha_r1.jpg",
       "engine_capacity": 998
     },
     {
@@ -12,7 +12,7 @@
       "name": "Ninja ZX-10R",
       "year": 2023,
       "brand": "Kawasaki",
-      "image": "https://example.com/images/kawasaki_zx10r.jpg",
+      "poster": "https://example.com/images/kawasaki_zx10r.jpg",
       "engine_capacity": 998
     },
     {
@@ -20,7 +20,7 @@
       "name": "CBR1000RR-R",
       "year": 2023,
       "brand": "Honda",
-      "image": "https://example.com/images/honda_cbr1000rrr.jpg",
+      "poster": "https://example.com/images/honda_cbr1000rrr.jpg",
       "engine_capacity": 1000
     },
     {
@@ -28,7 +28,7 @@
       "name": "GSX-R1000",
       "year": 2023,
       "brand": "Suzuki",
-      "image": "https://example.com/images/suzuki_gsxr1000.jpg",
+      "poster": "https://example.com/images/suzuki_gsxr1000.jpg",
       "engine_capacity": 999
     },
     {
@@ -36,7 +36,7 @@
       "name": "Panigale V4",
       "year": 2023,
       "brand": "Ducati",
-      "image": "https://example.com/images/ducati_panigale_v4.jpg",
+      "poster": "https://example.com/images/ducati_panigale_v4.jpg",
       "engine_capacity": 1103
     },
     {
@@ -44,7 +44,7 @@
       "name": "S1000RR",
       "year": 2023,
       "brand": "BMW",
-      "image": "https://example.com/images/bmw_s1000rr.jpg",
+      "poster": "https://example.com/images/bmw_s1000rr.jpg",
       "engine_capacity": 999
     },
     {
@@ -52,7 +52,7 @@
       "name": "RC 390",
       "year": 2023,
       "brand": "KTM",
-      "image": "https://example.com/images/ktm_rc390.jpg",
+      "poster": "https://example.com/images/ktm_rc390.jpg",
       "engine_capacity": 373
     },
     {
@@ -60,7 +60,7 @@
       "name": "Street Triple RS",
       "year": 2023,
       "brand": "Triumph",
-      "image": "https://example.com/images/triumph_streettriple_rs.jpg",
+      "poster": "https://example.com/images/triumph_streettriple_rs.jpg",
       "engine_capacity": 765
     },
     {
@@ -68,7 +68,7 @@
       "name": "RSV4 Factory",
       "year": 2023,
       "brand": "Aprilia",
-      "image": "https://example.com/images/aprilia_rsv4_factory.jpg",
+      "poster": "https://example.com/images/aprilia_rsv4_factory.jpg",
       "engine_capacity": 1099
     },
     {
@@ -76,7 +76,7 @@
       "name": "Sportster S",
       "year": 2023,
       "brand": "Harley-Davidson",
-      "image": "https://example.com/images/harley_sportster_s.jpg",
+      "poster": "https://example.com/images/harley_sportster_s.jpg",
       "engine_capacity": 1252
     },
     {
@@ -84,7 +84,7 @@
       "name": "F3 800",
       "year": 2023,
       "brand": "MV Agusta",
-      "image": "https://example.com/images/mv_agusta_f3_800.jpg",
+      "poster": "https://example.com/images/mv_agusta_f3_800.jpg",
       "engine_capacity": 798
     },
     {
@@ -92,7 +92,7 @@
       "name": "MT-09",
       "year": 2023,
       "brand": "Yamaha",
-      "image": "https://example.com/images/yamaha_mt09.jpg",
+      "poster": "https://example.com/images/yamaha_mt09.jpg",
       "engine_capacity": 889
     },
     {
@@ -100,7 +100,7 @@
       "name": "Africa Twin",
       "year": 2023,
       "brand": "Honda",
-      "image": "https://example.com/images/honda_africa_twin.jpg",
+      "poster": "https://example.com/images/honda_africa_twin.jpg",
       "engine_capacity": 1084
     },
     {
@@ -108,7 +108,7 @@
       "name": "V-Strom 1050DE",
       "year": 2023,
       "brand": "Suzuki",
-      "image": "https://example.com/images/suzuki_vstrom_1050de.jpg",
+      "poster": "https://example.com/images/suzuki_vstrom_1050de.jpg",
       "engine_capacity": 1037
     },
     {
@@ -116,7 +116,7 @@
       "name": "Multistrada V4",
       "year": 2023,
       "brand": "Ducati",
-      "image": "https://example.com/images/ducati_multistrada_v4.jpg",
+      "poster": "https://example.com/images/ducati_multistrada_v4.jpg",
       "engine_capacity": 1158
     },
     {
@@ -124,7 +124,7 @@
       "name": "R 1250 GS",
       "year": 2023,
       "brand": "BMW",
-      "image": "https://example.com/images/bmw_r1250gs.jpg",
+      "poster": "https://example.com/images/bmw_r1250gs.jpg",
       "engine_capacity": 1254
     },
     {
@@ -132,7 +132,7 @@
       "name": "1290 Super Adventure R",
       "year": 2023,
       "brand": "KTM",
-      "image": "https://example.com/images/ktm_1290_superadventure_r.jpg",
+      "poster": "https://example.com/images/ktm_1290_superadventure_r.jpg",
       "engine_capacity": 1301
     },
     {
@@ -140,7 +140,7 @@
       "name": "Tiger 900 Rally",
       "year": 2023,
       "brand": "Triumph",
-      "image": "https://example.com/images/triumph_tiger_900_rally.jpg",
+      "poster": "https://example.com/images/triumph_tiger_900_rally.jpg",
       "engine_capacity": 888
     },
     {
@@ -148,7 +148,7 @@
       "name": "Tuareg 660",
       "year": 2023,
       "brand": "Aprilia",
-      "image": "https://example.com/images/aprilia_tuareg_660.jpg",
+      "poster": "https://example.com/images/aprilia_tuareg_660.jpg",
       "engine_capacity": 659
     },
     {
@@ -156,7 +156,7 @@
       "name": "Pan America 1250",
       "year": 2023,
       "brand": "Harley-Davidson",
-      "image": "https://example.com/images/harley_panamerica_1250.jpg",
+      "poster": "https://example.com/images/harley_panamerica_1250.jpg",
       "engine_capacity": 1252
     }
   ]
