@@ -40,7 +40,7 @@ export class BikeModel {
     static async getById({ id }) {
         const [ bike ] = await connection.query('SELECT * FROM bike WHERE id = ?;', [ id ]);
         if (!bike.length) return null;
-        return bike;
+        return bike[0];
     }
 
     static async create({ input }) {
