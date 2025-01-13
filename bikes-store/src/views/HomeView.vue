@@ -1,7 +1,16 @@
 <script setup>
-import HelloWorld from '@/components/HelloWorld.vue';
+import BrandCard from '@/components/BrandCard.vue'
 </script>
 
 <template>
-  <h1>Home View</h1>
+  <!-- BENTO HERO -->
+  <div>Bento Hero</div>
+
+  <!-- BENTO NEWS -->
+  <div>News</div>
+
+  <!-- BRAND CARDS -->
+  <div>
+    <BrandCard />
+  </div>
 </template>

@@ -4,6 +4,10 @@ import axios from 'axios'
 import { onMounted } from 'vue'
 import { RouterLink } from 'vue-router'
 
+import Filter from '@/components/Filter.vue'
+import BikeCard from '@/components/BikeCard.vue'
+import BrandHero from '@/components/BrandHero.vue'
+
 const bikes = ref([])
 const loading = ref(false)
 const error = ref(null)
@@ -26,12 +30,18 @@ onMounted(fetchData)
   <div v-if="loading">Loading...</div>
   <div v-else-if="error">Error: {{ error.message }}</div>
   <div v-else>
-    <ul>
-      <li v-for="bike in bikes" :key="bike.id">
-        <RouterLink :to="{ name: 'detail', params: { id: bike.id } }">
-          {{ bike.name }}
-        </RouterLink>
-      </li>
-    </ul>
+    <!-- FILTERS -->
+    <Filter />
+
+    <!-- ORDER BY -->
+    <div>Order by:</div>
+
+    <!-- LIST OF BIKES -->
+    <div>
+      <BikeCard />
+    </div>
+
+    <!-- LIST IF BRANDS -->
+    <BrandHero />
   </div>
 </template>

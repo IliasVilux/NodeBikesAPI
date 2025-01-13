@@ -4,6 +4,9 @@ import axios from 'axios'
 import { onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 
+import BikeCard from '@/components/BikeCard.vue'
+import BikeSpecs from '@/components/BikeSpecs.vue'
+
 const route = useRoute()
 
 const bike = ref({})
@@ -29,7 +32,15 @@ onMounted(fetchData)
   <div v-if="loading">Loading...</div>
   <div v-else-if="error">Error: {{ error.message }}</div>
   <div v-else>
-    <h1>{{ bike.name }}</h1>
-    <p>{{ bike.year }}</p>
+    <!-- IMAGE CAROUSEL -->
+    <div>Images</div>
+
+    <!-- BIKE SPECS -->
+    <BikeSpecs />
+
+    <!-- SIMILAR BIKES -->
+    <div>
+      <BikeCard />
+    </div>
   </div>
 </template>
