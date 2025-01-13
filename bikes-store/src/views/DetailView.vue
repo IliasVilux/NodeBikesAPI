@@ -13,7 +13,7 @@ const error = ref(null)
 const fetchData = async () => {
   loading.value = true
   try {
-    const response = await axios.get(`${import.meta.env.VITE_API_URL}/${route.params.id}`)
+    const response = await axios.get(`${import.meta.env.VITE_API_URL}/motos/${route.params.id}`)
     bike.value = response.data
   } catch (err) {
     error.value = err
@@ -30,6 +30,6 @@ onMounted(fetchData)
   <div v-else-if="error">Error: {{ error.message }}</div>
   <div v-else>
     <h1>{{ bike.name }}</h1>
-    <p>{{ bike.description }}</p>
+    <p>{{ bike.year }}</p>
   </div>
 </template>
