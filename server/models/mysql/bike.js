@@ -29,16 +29,16 @@ export class BikeModel {
 
             if (!brand.length) return [];
 
-            const [ bikes ] = await connection.query('SELECT *, BIN_TO_UUID(id) id FROM bike WHERE brand_id = ?;', [ brand[0].id ]);
+            const [ bikes ] = await connection.query('SELECT * FROM bike WHERE brand_id = ?;', [ brand[0].id ]);
             return bikes;
         }
 
-        const [ bikes ] = await connection.query('SELECT *, BIN_TO_UUID(id) id FROM bike;');
+        const [ bikes ] = await connection.query('SELECT * FROM bike;');
         return bikes;
     }
 
     static async getById({ id }) {
-        const [ bike ] = await connection.query('SELECT *, BIN_TO_UUID(id) id FROM bike WHERE id = UUID_TO_BIN(?);', [ id ]);
+        const [ bike ] = await connection.query('SELECT * FROM bike WHERE id = ?;', [ id ]);
         if (!bike.length) return null;
         return bike;
     }
@@ -56,19 +56,19 @@ export class BikeModel {
         const [{ uuid }] = uuidResult;
 
         try {
-            await connection.query(`INSERT INTO bike (id, name, year, poster, engine_capacity, brand_id) VALUES (UUID_TO_BIN("${ uuid }"), ?, ?, ?, ?, ?);`, [ name, year, poster, engine_capacity, brand_id ]);
+            await connection.query(`INSERT INTO bike (id, name, year, poster, engine_capacity, brand_id) VALUES (?, ?, ?, ?, ?, ?);`, [ uuid, name, year, poster, engine_capacity, brand_id ]);
         } catch (error) {
             console.log(error);
             throw new Error('No se ha podido crear la moto.');
         }
 
-        const [bike] = await connection.query('SELECT *, BIN_TO_UUID(id) id FROM bike WHERE id = UUID_TO_BIN(?);', [ uuid ]);
+        const [bike] = await connection.query('SELECT * FROM bike WHERE id = ?;', [ uuid ]);
         return bike[0];
     }
 
     static async delete({ id }) {
         try {
-            await connection.query('DELETE FROM bike WHERE id = UUID_TO_BIN(?);', [ id ]);
+            await connection.query('DELETE FROM bike WHERE id = ?;', [ id ]);
             return true;
         } catch (error) {
             console.log(error);
@@ -79,8 +79,7 @@ export class BikeModel {
     static async update({ id, input }) {
         try {
             const [bike] = await connection.query(
-                'SELECT *, BIN_TO_UUID(id) id FROM bike WHERE id = UUID_TO_BIN(?);',
-                [id]
+                'SELECT * FROM bike WHERE id = ?;', [id]
             );
     
             if (!bike.length) throw new Error('La moto no existe o no se pudo actualizar.');
@@ -95,7 +94,7 @@ export class BikeModel {
             if (updates.length === 0) return bike[0];
 
             await connection.query(
-                `UPDATE bike SET ${updates.join(', ')} WHERE id = UUID_TO_BIN(?);`,
+                `UPDATE bike SET ${updates.join(', ')} WHERE id = ?;`,
                 [...values, id]
             );
         } catch (error) {
@@ -103,7 +102,7 @@ export class BikeModel {
             return null;
         }
 
-        const [bike] = await connection.query('SELECT *, BIN_TO_UUID(id) id FROM bike WHERE id = UUID_TO_BIN(?);', [ id ]);
+        const [bike] = await connection.query('SELECT * FROM bike WHERE id = ?;', [ id ]);
         return bike[0];
     }
 }
