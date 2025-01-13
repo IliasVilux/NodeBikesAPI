@@ -7,7 +7,7 @@ export const bikeSchema = z.object({
     }),
     year: z.number().int().min(1900).max(new Date().getFullYear() + 1),
     brand: z.string(),
-    image: z.string().url(),
+    poster: z.string().url(),
     engine_capacity: z.number().int().positive()
 })
 
