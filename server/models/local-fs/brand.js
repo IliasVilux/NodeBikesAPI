@@ -1,7 +1,7 @@
 import { createRequire } from 'node:module';
 
 const require = createRequire(import.meta.url);
-const brands = require('../../brands.json');
+const brands = require('../../json/brands.json');
 
 export class BrandModel {
     static async getAll() {

@@ -1,0 +1,21 @@
+[
+    {
+      "id": "b3f5c8a3d7f9e01",
+      "name": "YZF-R1",
+      "year": 2023,
+      "poster": "https://example.com/images/yamaha_r1.jpg",
+      "engine_capacity": 998,
+      "brand_id": 1,
+      "category_id": 1
+    },
+    {
+      "id": "b3f5c8a3d7f9e01",
+      "name": "Transalp",
+      "year": 2023,
+      "poster": "https://example.com/images/honda_transalp.jpg",
+      "engine_capacity": 756,
+      "brand_id": 2,
+      "category_id": 2
+    }
+  ]
+  

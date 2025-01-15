@@ -2,9 +2,10 @@ import cors from 'cors';
 import express, { json } from 'express';
 import { createBikeRouter } from './routes/bikes.js';
 import { createBrandRouter } from './routes/brands.js';
+import { createCategoryRouter } from './routes/categories.js';
 import 'dotenv/config';
 
-export const createApp = ({ bikeModel, brandModel }) => {
+export const createApp = ({ bikeModel, brandModel, categoryModel }) => {
     const app = express();
     app.use(json());
     app.use(cors());
@@ -12,6 +13,7 @@ export const createApp = ({ bikeModel, brandModel }) => {
     
     app.use('/motos', createBikeRouter({ bikeModel }));
     app.use('/marcas', createBrandRouter({ brandModel }));
+    app.use('/categorias', createCategoryRouter({ categoryModel }));
     
     const PORT = process.env.PORT ?? 3000;
     

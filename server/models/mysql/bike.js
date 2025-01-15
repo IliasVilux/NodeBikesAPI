@@ -23,17 +23,30 @@ const connectionString = {
 const connection = await mysql.createConnection(connectionString);
 
 export class BikeModel {
-    static async getAll({ marca }) {
+    static async getAll({ marca, categoria }) {
+        let query = 'SELECT * FROM bike';
+        const params = [];
+        const conditions = [];
+
         if (marca) {
-            const [brand] = await connection.query('SELECT * FROM brand WHERE name = ?;', [ marca ]);
-
+            const [brand] = await connection.query('SELECT * FROM brand WHERE id = ?;', [marca]);
             if (!brand.length) return [];
-
-            const [ bikes ] = await connection.query('SELECT * FROM bike WHERE brand_id = ?;', [ brand[0].id ]);
-            return bikes;
+            conditions.push('brand_id = ?');
+            params.push(brand[0].id);
         }
 
-        const [ bikes ] = await connection.query('SELECT * FROM bike;');
+        if (categoria) {
+            const [category] = await connection.query('SELECT * FROM category WHERE id = ?;', [categoria]);
+            if (!category.length) return [];
+            conditions.push('category_id = ?');
+            params.push(category[0].id);
+        }
+
+        if (conditions.length) {
+            query += ' WHERE ' + conditions.join(' AND ');
+        }
+
+        const [bikes] = await connection.query(query, params);
         return bikes;
     }
 
