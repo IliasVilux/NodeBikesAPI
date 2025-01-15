@@ -11,7 +11,7 @@ import SearchBar from '@/components/SearchBar.vue'
       class="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between py-2 px-2 md:px-0 gap-y-2"
     >
       <RouterLink to="/">
-        <Svg name="logo" />
+        <Svg name="logo" class="size-12" />
       </RouterLink>
       <SearchBar />
     </nav>
