@@ -29,7 +29,7 @@ const fetchData = async () => {
   loadingCategories.value = true
   try {
     const responseCategories = await axios.get(`${import.meta.env.VITE_API_URL}/categorias`)
-    brands.value = responseCategories.data
+    categories.value = responseCategories.data
   } catch (err) {
     errorCategories.value = err
   } finally {
@@ -102,8 +102,8 @@ onMounted(fetchData)
     </RouterLink>
   </div>
   <div class="max-w-7xl mx-auto">
-    <div v-if="loadingBrands">LoadingBrands...</div>
-    <div v-else-if="errorBrands">ErrorBrands: {{ errorBrands.message }}</div>
+    <div v-if="loadingBrands">Loading...</div>
+    <div v-else-if="errorBrands">Error: {{ errorBrands.message }}</div>
     <div v-else class="grid grid-cols-2 md:grid-cols-5 gap-2">
       <GlobalCard v-for="brand in brands" :key="brand.id" :brand="brand" />
     </div>
