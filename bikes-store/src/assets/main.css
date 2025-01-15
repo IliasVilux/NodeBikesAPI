@@ -4,4 +4,5 @@
 
 body {
   @apply bg-background;
+  @apply text-text-primary;
 }
