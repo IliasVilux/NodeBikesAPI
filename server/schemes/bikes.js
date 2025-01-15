@@ -6,9 +6,10 @@ export const bikeSchema = z.object({
         required_error: 'El nombre es requerido'
     }),
     year: z.number().int().min(1900).max(new Date().getFullYear() + 1),
-    brand: z.string(),
     poster: z.string().url(),
-    engine_capacity: z.number().int().positive()
+    engine_capacity: z.number().int().positive(),
+    brand_id: z.number().int().positive(),
+    category_id: z.number().int().positive(),
 })
 
 export function validateBike(object) {

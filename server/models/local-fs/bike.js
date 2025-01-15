@@ -2,17 +2,27 @@ import { createRequire } from 'node:module';
 import { randomUUID } from "node:crypto";
 
 const require = createRequire(import.meta.url);
-const bikes = require('../../bikes.json');
+const bikes = require('../../json/bikes.json');
+const brands = require('../../json/brands.json');
+const categories = require('../../json/categories.json');
 
 export class BikeModel {
-    static async getAll({ marca }) {
+    static async getAll({ marca, categoria }) {
+        let filteredBikes = bikes;
+
         if (marca) {
-            return bikes.filter(
-                bike => bike.brand.toLowerCase().includes(marca.toLowerCase())
-            )
+            const brand = brands.find(brand => brand.id === Number(marca));
+            if (!brand) return [];
+            filteredBikes = filteredBikes.filter(bike => bike.brand_id === brand.id);
+        }
+
+        if (categoria) {
+            const category = categories.find(category => category.id === Number(categoria));
+            if (!category) return [];
+            filteredBikes = filteredBikes.filter(bike => bike.category_id === category.id);
         }
         
-        return bikes;
+        return filteredBikes;
     }
 
     static async getById({ id }) {
