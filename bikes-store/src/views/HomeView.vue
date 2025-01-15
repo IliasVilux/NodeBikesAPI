@@ -1,7 +1,42 @@
 <script setup>
+import axios from 'axios'
+import { onMounted } from 'vue'
+import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
-import BrandCard from '@/components/BrandCard.vue'
+
+import GlobalCard from '@/components/GlobalCard.vue'
 import Svg from '@/components/Svg.vue'
+
+const brands = ref([])
+const loadingBrands = ref(false)
+const errorBrands = ref(null)
+
+const categories = ref([])
+const loadingCategories = ref(false)
+const errorCategories = ref(null)
+
+const fetchData = async () => {
+  loadingBrands.value = true
+  try {
+    const responseBrands = await axios.get(`${import.meta.env.VITE_API_URL}/marcas`)
+    brands.value = responseBrands.data
+  } catch (err) {
+    errorBrands.value = err
+  } finally {
+    loadingBrands.value = false
+  }
+
+  loadingCategories.value = true
+  try {
+    const responseCategories = await axios.get(`${import.meta.env.VITE_API_URL}/categorias`)
+    brands.value = responseCategories.data
+  } catch (err) {
+    errorCategories.value = err
+  } finally {
+    loadingCategories.value = false
+  }
+}
+onMounted(fetchData)
 </script>
 
 <template>
@@ -14,7 +49,7 @@ import Svg from '@/components/Svg.vue'
       <h2 class="mt-2 text-2xl font-bold uppercase leading-6">compra tu moto ideal</h2>
       <RouterLink to="/motos">
         <button
-          class="mt-6 px-6 py-2 rounded-full bg-background text-text-primary uppercase hover:bg-accent hover:text-white transition duration-300">COMPRAR</button>
+          class="text-white mt-6 px-6 py-2 rounded-full bg-blue-700 uppercase hover:bg-accent hover:text-white transition duration-300">COMPRAR</button>
       </RouterLink>
     </div>
 
@@ -31,7 +66,7 @@ import Svg from '@/components/Svg.vue'
 
     <!-- Logo oculto en pantallas pequeñas -->
     <div class="hidden md:flex w-full justify-center items-center h-full md:col-span-1 mx-auto bg-white rounded-md">
-      <Svg name="logo" />
+      <Svg name="logo" class="size-24" />
     </div>
 
     <!-- Sección de texto informativo -->
@@ -47,8 +82,33 @@ import Svg from '@/components/Svg.vue'
   <!-- BENTO NEWS -->
   <div>News</div>
 
-  <!-- BRAND CARDS -->
-  <div>
-    <BrandCard />
+  <!-- SEARCH BY BRAND -->
+  <div class="text-center mb-6 mt-10">
+    <h1 class="text-3xl md:text-5xl font-semibold">Busca por marcas</h1>
+    <RouterLink to="/motos">
+      <button class="mt-1 text-accent">Ver todos los modelos</button>
+    </RouterLink>
+  </div>
+  <div class="max-w-7xl mx-auto">
+    <div v-if="loadingBrands">LoadingBrands...</div>
+    <div v-else-if="errorBrands">ErrorBrands: {{ errorBrands.message }}</div>
+    <div v-else class="grid grid-cols-2 md:grid-cols-5 gap-2">
+      <GlobalCard v-for="brand in brands" :key="brand.id" :brand="brand" />
+    </div>
+  </div>
+
+  <!-- SEARCH BY STYLE -->
+  <div class="text-center mb-6 mt-10">
+    <h1 class="text-3xl md:text-5xl font-semibold">Busca por estilo</h1>
+    <RouterLink to="/motos">
+      <button class="mt-1 text-accent">Ver todos los modelos</button>
+    </RouterLink>
+  </div>
+  <div class="max-w-7xl mx-auto">
+    <div v-if="loadingCategories">Loading...</div>
+    <div v-else-if="errorCategories">Error: {{ errorCategories.message }}</div>
+    <div v-else class="grid grid-cols-2 md:grid-cols-5 gap-2">
+      <GlobalCard v-for="style in categories" :key="style.id" :brand="style" />
+    </div>
   </div>
 </template>
