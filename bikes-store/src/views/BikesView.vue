@@ -1,12 +1,14 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import axios from 'axios'
 import { onMounted } from 'vue'
-import { RouterLink } from 'vue-router'
+import { RouterLink, useRoute } from 'vue-router'
 
 import Filter from '@/components/Filter.vue'
 import BikeCard from '@/components/BikeCard.vue'
 import BrandHero from '@/components/BrandHero.vue'
+
+const route = useRoute()
 
 const bikes = ref([])
 const loading = ref(false)
@@ -15,7 +17,18 @@ const error = ref(null)
 const fetchData = async () => {
   loading.value = true
   try {
-    const response = await axios.get(`${import.meta.env.VITE_API_URL}/motos`)
+    const marca = route.query.marca
+    const categoria = route.query.categoria
+
+    let url = `${import.meta.env.VITE_API_URL}/motos`
+    if (marca) {
+      url += `?marca=${marca}`
+    }
+    if (categoria) {
+      url += `?categoria=${categoria}`
+    }
+
+    const response = await axios.get(url)
     bikes.value = response.data
   } catch (err) {
     error.value = err
@@ -24,6 +37,7 @@ const fetchData = async () => {
   }
 }
 onMounted(fetchData)
+watch(() => route.query.marca, fetchData)
 </script>
 
 <template>
@@ -37,8 +51,8 @@ onMounted(fetchData)
     <div>Order by:</div>
 
     <!-- LIST OF BIKES -->
-    <div>
-      <BikeCard />
+    <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-5 gap-2">
+      <BikeCard v-for="bike in bikes" :key="bike.id" :bike="bike" />
     </div>
 
     <!-- LIST IF BRANDS -->
