@@ -2,16 +2,32 @@
 import { RouterLink } from 'vue-router'
 import Svg from '@/components/Svg.vue'
 
-defineProps({
-  brand: {
+const { item, type } = defineProps({
+  item: {
     type: Object,
     required: true,
   },
+  type: {
+    type: String,
+    required: true,
+    validator: (value) => ['brand', 'category'].includes(value)
+  },
 })
+
+const getLink = () => {
+  switch (type) {
+    case 'brand':
+      return { name: 'bikes', query: { marca: item.id } }
+    case 'category':
+      return { name: 'bikes', query: { categoria: item.id } }
+    default:
+      return { name: 'bikes' }
+  }
+}
 </script>
 
 <template>
-  <RouterLink to="/">
+  <RouterLink :to="getLink()">
     <div class="bg-card rounded-md shadow-lg grid grid-rows-4 grid-cols-3 overflow-hidden">
       <div class="row-span-3 col-span-2 flex items-center justify-center aspect-[4/3] group">
         <img
@@ -22,7 +38,7 @@ defineProps({
       </div>
       <div class="row-span-3 col-span-1 bg-border"></div>
       <div class="col-span-2 bg-accent-hover flex items-center px-5 py-2">
-        <h3 class="uppercase text-white text-sm font-bold truncate">{{ brand.name }}</h3>
+        <h3 class="uppercase text-white text-sm font-bold truncate">{{ item.name }}</h3>
       </div>
       <div class="bg-accent text-white flex items-center justify-center">
         <Svg name="arrow-right" class="size-5" />

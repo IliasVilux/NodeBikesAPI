@@ -105,7 +105,7 @@ onMounted(fetchData)
     <div v-if="loadingBrands">Loading...</div>
     <div v-else-if="errorBrands">Error: {{ errorBrands.message }}</div>
     <div v-else class="grid grid-cols-2 md:grid-cols-5 gap-2">
-      <GlobalCard v-for="brand in brands" :key="brand.id" :brand="brand" />
+      <GlobalCard v-for="brand in brands" :key="brand.id" :item="brand" type="brand" />
     </div>
   </div>
 
@@ -120,7 +120,7 @@ onMounted(fetchData)
     <div v-if="loadingCategories">Loading...</div>
     <div v-else-if="errorCategories">Error: {{ errorCategories.message }}</div>
     <div v-else class="grid grid-cols-2 md:grid-cols-5 gap-2">
-      <GlobalCard v-for="style in categories" :key="style.id" :brand="style" />
+      <GlobalCard v-for="category in categories" :key="category.id" :item="category" type="category" />
     </div>
   </div>
 </template>
