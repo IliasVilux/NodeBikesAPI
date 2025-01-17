@@ -27,11 +27,11 @@ onMounted(fetchData)
 </script>
 
 <template>
-  <div class="bg-white rounded-lg overflow-hidden flex flex-col">
+  <div class="bg-white rounded-lg overflow-hidden flex flex-col relative">
     <RouterLink :to="{ name: 'bikes', query: { marca: bike.brand_id } }">
       <h4
         v-if="brand"
-        class="text-xl text-white uppercase font-semibold bg-accent rounded-md px-4 py-2 z-20"
+        class="text-xl text-white uppercase font-semibold bg-accent rounded-md px-4 py-2 relative z-10"
       >
         {{ brand }}
       </h4>
@@ -39,7 +39,7 @@ onMounted(fetchData)
     <img
       src=""
       :alt="'Imagen de la moto ' + brand + ' ' + bike.name"
-      class="w-full aspect-[4/3] object-cover flex-grow bg-[#D9D9D9] -mt-1 z-10"
+      class="w-full aspect-[4/3] object-cover flex-grow bg-[#D9D9D9] -mt-1"
     />
     <RouterLink :to="{ name: 'detail', params: { id: bike.id } }">
       <div class="px-4 py-2 mt-auto hover:text-accent transition duration-300">
