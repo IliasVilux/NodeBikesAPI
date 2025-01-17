@@ -9,6 +9,8 @@ import PromoHeader from '@/components/PromoHeader.vue'
 <template>
   <PromoHeader />
   <Header />
-  <RouterView />
+  <div class="mx-1">
+    <RouterView />
+  </div>
   <Footer />
 </template>
