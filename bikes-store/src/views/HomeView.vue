@@ -48,7 +48,7 @@ onMounted(fetchData)
     >
       <p>Acelera tus sueños,</p>
       <h2 class="mt-2 text-2xl font-bold uppercase leading-6">compra tu moto ideal</h2>
-      <RouterLink to="/motos">
+      <RouterLink :to="{name: 'bikes'}">
         <button
           class="text-white mt-6 px-6 py-2 rounded-full bg-blue-700 uppercase hover:bg-accent hover:text-white transition duration-300"
         >
@@ -59,7 +59,7 @@ onMounted(fetchData)
 
     <!-- Imagen con texto superpuesto -->
     <RouterLink
-      to="/motos"
+      :to="{name: 'bikes'}"
       class="relative flex items-center overflow-hidden row-span-2 md:col-span-3 rounded-md"
     >
       <div class="z-10 w-full py-12 text-center text-white md:text-start md:max-w-72 md:ml-24">
@@ -97,7 +97,7 @@ onMounted(fetchData)
   <!-- SEARCH BY BRAND -->
   <div class="text-center mb-6 mt-10">
     <h1 class="text-3xl md:text-5xl font-semibold">Busca por marcas</h1>
-    <RouterLink to="/motos">
+    <RouterLink :to="{name: 'bikes'}">
       <button class="mt-1 text-accent">Ver todos los modelos</button>
     </RouterLink>
   </div>
@@ -112,7 +112,7 @@ onMounted(fetchData)
   <!-- SEARCH BY STYLE -->
   <div class="text-center mb-6 mt-10">
     <h1 class="text-3xl md:text-5xl font-semibold">Busca por estilo</h1>
-    <RouterLink to="/motos">
+    <RouterLink :to="{name: 'bikes'}">
       <button class="mt-1 text-accent">Ver todos los modelos</button>
     </RouterLink>
   </div>
