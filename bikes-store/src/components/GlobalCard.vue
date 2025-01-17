@@ -10,7 +10,7 @@ const { item, type } = defineProps({
   type: {
     type: String,
     required: true,
-    validator: (value) => ['brand', 'category'].includes(value)
+    validator: (value) => ['brand', 'category'].includes(value),
   },
 })
 
