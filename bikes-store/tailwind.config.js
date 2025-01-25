@@ -7,15 +7,17 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: '#F5F5F7',      // Fondo principal
-        card: '#FAFAFA',            // Fondo de tarjetas
-        'text-primary': '#2C2C2E',  // Texto principal
-        'text-secondary': '#636366',// Texto secundario
-        accent: '#8230C9',          // Morado vibrante (Pramac)
-        'accent-hover': '#6A0DAD',  // Hover/activo
-        success: '#4CAF50',         // Confirmaciones
-        error: '#E57373',           // Errores
-        border: '#90A4AE',          // Bordes
+        background: '#F9FAFB',
+        'text-primary': '#2D2F33',
+        'text-secondary': '#6B7280',
+        'text-gradient-dark': '#82869F',
+        'text-gradient-light': '#FFFFFF',
+        'accent-blue': '#2563EB',
+        'accent-blue-light': '#DBEAFE',
+        'accent-orange': '#F59E0B',
+        success: '#10B981',
+        error: '#EF4444',
+        border: '#90A4AE',
       }
     },
   },
