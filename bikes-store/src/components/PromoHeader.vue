@@ -32,7 +32,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="w-full bg-accent-hover text-gray-200 px-6 py-2 flex items-center justify-center">
+  <div class="w-full bg-accent-blue text-white px-6 py-2 flex items-center justify-center">
     <div class="relative overflow-hidden">
       <p
         v-html="currentText"
