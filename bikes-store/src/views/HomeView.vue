@@ -4,8 +4,8 @@ import { onMounted } from 'vue'
 import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
 import PromoHeader from '@/components/PromoHeader.vue'
+import Hero from '@/components/Hero.vue'
 
-import GlobalCard from '@/components/GlobalCard.vue'
 import Svg from '@/components/Svg.vue'
 
 const brands = ref([])
@@ -42,5 +42,5 @@ onMounted(fetchData)
 
 <template>
   <PromoHeader />
-  <p>adsa</p>
+  <Hero />
 </template>
