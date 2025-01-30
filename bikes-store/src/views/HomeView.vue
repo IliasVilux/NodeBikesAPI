@@ -2,11 +2,9 @@
 import axios from 'axios'
 import { onMounted } from 'vue'
 import { ref } from 'vue'
-import { RouterLink } from 'vue-router'
 import PromoHeader from '@/components/PromoHeader.vue'
 import Hero from '@/components/Hero.vue'
-
-import Svg from '@/components/Svg.vue'
+import Header from '@/components/Header.vue'
 
 const brands = ref([])
 const loadingBrands = ref(false)
@@ -42,5 +40,6 @@ onMounted(fetchData)
 
 <template>
   <PromoHeader />
+  <Header />
   <Hero />
 </template>

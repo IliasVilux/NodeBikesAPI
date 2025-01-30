@@ -31,45 +31,26 @@ const handleSubmit = (e) => {
 </script>
 
 <template>
-  <form class="w-full md:w-72 flex items-center relative" @submit="handleSubmit">
-    <!-- Contenedor del input -->
-    <div
-      class="w-full flex items-center border border-border rounded-full px-4 md:px-3 focus-within:ring-0 focus-within:border-black transition"
-    >
-      <!-- Icono de lupa -->
+  <!-- <form class="flex w-full md:w-72 items-center relative" @submit="handleSubmit">
+    <div class="w-full flex items-center bg-white border border-border rounded-full px-4 md:px-3 transition">
       <Svg name="magnifying-glass" class="size-5 text-gray-500" />
 
-      <!-- Placeholder animado -->
-      <div
-        class="absolute left-11 pointer-events-none text-gray-400"
-        :class="{ 'opacity-0': searchQuery }"
-      >
+      <div class="absolute left-11 pointer-events-none text-gray-400" :class="{ 'opacity-0': searchQuery }">
         <span>Busca </span>
-        <span
-          class="font-semibold"
-          :class="isAnimatingOut ? 'animate-slide-out' : 'animate-slide-in'"
-          >{{ currentKeyword }}</span
-        >
+        <span class="font-semibold" :class="isAnimatingOut ? 'animate-slide-out' : 'animate-slide-in'">{{ currentKeyword
+          }}</span>
       </div>
 
-      <!-- Input -->
-      <input
-        v-model="searchQuery"
-        type="search"
-        placeholder=""
-        autocomplete="off"
-        class="size-full bg-transparent pl-2 py-2 focus:outline-none"
-      />
+      <input v-model="searchQuery" type="search" placeholder="" autocomplete="off"
+        class="size-full bg-transparent pl-2 py-2 focus:outline-none" />
     </div>
 
-    <!-- Botón de búsqueda -->
-    <button
-      type="submit"
-      class="text-xs text-white bg-accent hover:bg-accent-hover transition duration-300 rounded-full absolute right-[6px] top-1/2 -translate-y-1/2 px-4 md:px-2 py-2 md:py-1"
-    >
+    <button type="submit"
+      class="text-xs text-white bg-accent-blue hover:bg-accent-orange border border-accent-blue hover:border-border transition duration-300 rounded-full absolute right-3 top-1/2 -translate-y-1/2 px-4 md:px-2 py-2 md:py-1">
       Buscar
     </button>
-  </form>
+  </form> -->
+  <input type="text" name="" id="" class="bg-black w-96 lg:w-64">
 </template>
 
 <style scoped>
