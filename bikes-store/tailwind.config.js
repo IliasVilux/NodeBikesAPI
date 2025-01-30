@@ -18,6 +18,7 @@ export default {
         success: '#10B981',
         error: '#EF4444',
         border: '#90A4AE',
+        'border-light': '#CAD5E2',
       }
     },
   },

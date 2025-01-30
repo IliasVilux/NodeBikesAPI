@@ -1,21 +1,22 @@
 <script setup>
-import { ref, onMounted, onUnmounted, computed } from 'vue'
+import { computed, onMounted, onUnmounted, ref } from 'vue'
 import Svg from '@/components/Svg.vue'
+
+const isOpen = ref(false)
+const searchInput = ref(null)
+
+const toggleSearch = () => {
+  isOpen.value = !isOpen.value
+  if (isOpen.value) {
+    setTimeout(() => searchInput.value?.focus(), 50)
+  }
+}
 
 const keywords = ['Yamaha', 'Honda', 'Kawasaki', 'Ténéré']
 const currentIndex = ref(0)
 const isAnimatingOut = ref(false)
 const searchQuery = ref('')
 const currentKeyword = computed(() => keywords[currentIndex.value])
-
-const nextKeyword = () => {
-  isAnimatingOut.value = true
-  setTimeout(() => {
-    isAnimatingOut.value = false
-    currentIndex.value = (currentIndex.value + 1) % keywords.length
-  }, 300)
-}
-
 let intervalId
 onMounted(() => {
   intervalId = setInterval(nextKeyword, 4000)
@@ -24,33 +25,37 @@ onUnmounted(() => {
   clearInterval(intervalId)
 })
 
-const handleSubmit = (e) => {
-  e.preventDefault()
-  console.log(searchQuery.value)
+const nextKeyword = () => {
+  isAnimatingOut.value = true
+  setTimeout(() => {
+    isAnimatingOut.value = false
+    currentIndex.value = (currentIndex.value + 1) % keywords.length
+  }, 300)
 }
 </script>
 
 <template>
-  <!-- <form class="flex w-full md:w-72 items-center relative" @submit="handleSubmit">
-    <div class="w-full flex items-center bg-white border border-border rounded-full px-4 md:px-3 transition">
-      <Svg name="magnifying-glass" class="size-5 text-gray-500" />
+  <div class="flex items-center h-10 my-2 lg:my-0">
+    <button @click="toggleSearch" class="relative inline-flex items-center justify-center rounded-md p-2 lg:p-0">
+      <Svg v-if="!isOpen" name="magnifying-glass" class="size-5" />
+    </button>
 
-      <div class="absolute left-11 pointer-events-none text-gray-400" :class="{ 'opacity-0': searchQuery }">
+    <div v-if="isOpen"
+      class="w-full lg:w-64 h-full flex items-center bg-white border border-border-light rounded-full me-2 lg:me-0 ps-4 pe-2 md:ps-3 transition">
+      <div class="text-text-secondary absolute pointer-events-none" :class="{ 'opacity-0': searchQuery }">
         <span>Busca </span>
         <span class="font-semibold" :class="isAnimatingOut ? 'animate-slide-out' : 'animate-slide-in'">{{ currentKeyword
           }}</span>
       </div>
 
-      <input v-model="searchQuery" type="search" placeholder="" autocomplete="off"
-        class="size-full bg-transparent pl-2 py-2 focus:outline-none" />
-    </div>
+      <input v-model="searchQuery" placeholder="" autocomplete="off"
+        class="text-text-primary size-full bg-transparent focus:outline-none" />
 
-    <button type="submit"
-      class="text-xs text-white bg-accent-blue hover:bg-accent-orange border border-accent-blue hover:border-border transition duration-300 rounded-full absolute right-3 top-1/2 -translate-y-1/2 px-4 md:px-2 py-2 md:py-1">
-      Buscar
-    </button>
-  </form> -->
-  <input type="text" name="" id="" class="bg-black w-96 lg:w-64">
+      <button @click="toggleSearch">
+        <Svg name="cross" class="size-6 text-text-secondary" />
+      </button>
+    </div>
+  </div>
 </template>
 
 <style scoped>
