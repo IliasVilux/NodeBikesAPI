@@ -10,9 +10,12 @@ const { item, type } = defineProps({
   type: {
     type: String,
     required: true,
-    validator: (value) => ['brand', 'category'].includes(value),
   },
 })
+
+const getImagePath = (name, category) => {
+  return new URL(`/src/assets/images/${category}/${name.toLowerCase()}.png`, import.meta.url).href
+}
 
 const getLink = () => {
   switch (type) {
@@ -27,21 +30,13 @@ const getLink = () => {
 </script>
 
 <template>
-  <RouterLink :to="getLink()">
-    <div class="bg-card rounded-md shadow-lg grid grid-rows-4 grid-cols-3 overflow-hidden">
-      <div class="row-span-3 col-span-2 flex items-center justify-center aspect-[4/3] group">
-        <img
-          src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.pngall.com%2Fwp-content%2Fuploads%2F11%2FYamaha-Logo-PNG-Image-File.png&f=1&nofb=1&ipt=48710cf17b9a61b05cc546ac8238ea6d23eba5642f68abe4f1e14c81c0f06b0b&ipo=images"
-          alt=""
-          class="size-20 transition-transform duration-300 ease-in-out group-hover:scale-105"
-        />
-      </div>
-      <div class="row-span-3 col-span-1 bg-border"></div>
-      <div class="col-span-2 bg-accent-hover flex items-center px-5 py-2">
-        <h3 class="uppercase text-white text-sm font-bold truncate">{{ item.name }}</h3>
-      </div>
-      <div class="bg-accent text-white flex items-center justify-center">
-        <Svg name="arrow-right" class="size-5" />
+  <RouterLink :to="getLink()" class="hover:-translate-y-1 transition duration-300">
+    <div class="bg-white aspect-square rounded-2xl overflow-hidden border border-border-light flex flex-col items-center">
+      <img :src="getImagePath(item.name, type)" :alt="item.name" class="size-32 object-contain flex-grow" />
+
+      <div class="w-full text-accent-blue-light bg-accent-blue flex justify-between px-6 py-3">
+        <p class="lg:text-lg truncate uppercase">{{ item.name }}</p>
+        <Svg name="arrow-right" class="size-6 text-accent-orange" />
       </div>
     </div>
   </RouterLink>

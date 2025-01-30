@@ -5,6 +5,7 @@ import { ref } from 'vue'
 import PromoHeader from '@/components/PromoHeader.vue'
 import Hero from '@/components/Hero.vue'
 import Header from '@/components/Header.vue'
+import CardsContainer from '@/components/CardsContainer.vue'
 
 const brands = ref([])
 const loadingBrands = ref(false)
@@ -42,4 +43,5 @@ onMounted(fetchData)
   <PromoHeader />
   <Header />
   <Hero />
+  <CardsContainer :items="brands" itemsType="brand" :loading="loadingBrands" :error="errorBrands"  />
 </template>
