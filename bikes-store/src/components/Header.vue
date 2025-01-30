@@ -8,7 +8,7 @@ const isMobileMenuOpen = ref(true)
 
 <template>
   <nav
-    class="max-w-5xl lg:text-white mx-auto mt-0 lg:mt-3 lg:ps-7 lg:pe-3 lg:py-2 relative lg:absolute left-0 right-0 lg:border lg:rounded-full backdrop-blur-sm z-10"
+    class="max-w-5xl lg:text-white mx-auto mt-0 lg:mt-3 lg:ps-7 lg:pe-3 lg:py-2 relative lg:absolute left-0 right-0 lg:border lg:rounded-full backdrop-blur-sm z-10 bg-white lg:bg-transparent"
   >
     <div class="flex justify-between">
       <div class="flex gap-x-6 items-center">
