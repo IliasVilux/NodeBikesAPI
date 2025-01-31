@@ -6,6 +6,7 @@ import PromoHeader from '@/components/PromoHeader.vue'
 import Hero from '@/components/Hero.vue'
 import Header from '@/components/Header.vue'
 import CardsContainer from '@/components/CardsContainer.vue'
+import Footer from '@/components/Footer.vue'
 
 const brands = ref([])
 const loadingBrands = ref(false)
@@ -51,4 +52,5 @@ onMounted(fetchData)
     :loading="loadingCategories"
     :error="errorCategories"
   />
+  <Footer />
 </template>
