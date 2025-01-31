@@ -30,11 +30,11 @@ const getLink = () => {
 </script>
 
 <template>
-  <RouterLink :to="getLink()" class="hover:-translate-y-1 transition duration-300">
+  <RouterLink :to="getLink()" class="group hover:-translate-y-1 transition duration-300">
     <div class="bg-white aspect-square rounded-2xl overflow-hidden border border-border-light flex flex-col items-center">
       <img :src="getImagePath(item.name, type)" :alt="item.name" class="size-20 md:size-36 lg:size-28 xl:size-44 object-contain flex-grow" />
 
-      <div class="w-full text-accent-blue-light bg-accent-blue flex justify-between px-6 py-3">
+      <div class="w-full text-accent-blue-light group-hover:text-text-primary bg-accent-blue group-hover:bg-accent-blue-light flex justify-between px-6 py-3 group-hover:border-t group-hover:border-border-light transition duration-200">
         <p class="lg:text-lg truncate uppercase">{{ item.name }}</p>
         <Svg name="arrow-right" class="size-6 text-accent-orange" />
       </div>
