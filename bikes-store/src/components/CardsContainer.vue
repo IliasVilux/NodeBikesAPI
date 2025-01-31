@@ -6,25 +6,25 @@ import GlobalCard from '@/components/GlobalCard.vue'
 defineProps({
   items: {
     type: Object,
-    required: true
+    required: true,
   },
   itemsType: {
     type: String,
-    required: true
+    required: true,
   },
   loading: {
     type: Boolean,
-    required: true
+    required: true,
   },
   error: {
     type: Object,
-    required: false
-  }
+    required: false,
+  },
 })
 
 const itemsTranslate = {
   brand: 'Marca',
-  category: 'Estilo'
+  category: 'Estilo',
 }
 </script>
 
@@ -34,7 +34,10 @@ const itemsTranslate = {
       <h4 class="text-2xl">
         Buscar por <span class="capitalize">{{ itemsTranslate[itemsType] }}</span>
       </h4>
-      <RouterLink :to="{ name: 'bikes' }" class="text-text-secondary hover:text-accent-orange transition duration-300">
+      <RouterLink
+        :to="{ name: 'bikes' }"
+        class="text-text-secondary hover:text-accent-orange transition duration-300"
+      >
         Mostrar todos
       </RouterLink>
     </div>

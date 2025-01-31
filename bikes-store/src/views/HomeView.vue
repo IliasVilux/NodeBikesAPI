@@ -43,7 +43,12 @@ onMounted(fetchData)
   <PromoHeader />
   <Header />
   <Hero />
-  <CardsContainer :items="brands" itemsType="brand" :loading="loadingBrands" :error="errorBrands"  />
+  <CardsContainer :items="brands" itemsType="brand" :loading="loadingBrands" :error="errorBrands" />
   <!-- Bento -->
-  <CardsContainer :items="categories" itemsType="category" :loading="loadingCategories" :error="errorCategories"  />
+  <CardsContainer
+    :items="categories"
+    itemsType="category"
+    :loading="loadingCategories"
+    :error="errorCategories"
+  />
 </template>
