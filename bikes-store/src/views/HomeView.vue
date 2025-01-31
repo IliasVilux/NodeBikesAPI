@@ -44,4 +44,6 @@ onMounted(fetchData)
   <Header />
   <Hero />
   <CardsContainer :items="brands" itemsType="brand" :loading="loadingBrands" :error="errorBrands"  />
+  <!-- Bento -->
+  <CardsContainer :items="categories" itemsType="category" :loading="loadingCategories" :error="errorCategories"  />
 </template>

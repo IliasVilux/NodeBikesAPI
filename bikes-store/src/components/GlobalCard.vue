@@ -32,7 +32,7 @@ const getLink = () => {
 <template>
   <RouterLink :to="getLink()" class="hover:-translate-y-1 transition duration-300">
     <div class="bg-white aspect-square rounded-2xl overflow-hidden border border-border-light flex flex-col items-center">
-      <img :src="getImagePath(item.name, type)" :alt="item.name" class="size-32 object-contain flex-grow" />
+      <img :src="getImagePath(item.name, type)" :alt="item.name" class="size-44 object-contain flex-grow" />
 
       <div class="w-full text-accent-blue-light bg-accent-blue flex justify-between px-6 py-3">
         <p class="lg:text-lg truncate uppercase">{{ item.name }}</p>
