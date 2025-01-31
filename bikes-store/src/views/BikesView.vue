@@ -1,8 +1,7 @@
 <script setup>
-import { ref, watch } from 'vue'
-import axios from 'axios'
-import { onMounted } from 'vue'
+import { ref, watch, onMounted } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
+import axios from 'axios'
 
 import Filter from '@/components/Filter.vue'
 import BikeCard from '@/components/BikeCard.vue'

@@ -8,10 +8,8 @@ const promoTexts = [
   'Encuentra tu próxima aventura sobre ruedas.',
   '<strong>Variedad, calidad y servicio</strong>: todo en un solo lugar.',
 ]
-
 const currentTextIndex = ref(0)
 const isAnimatingOut = ref(false)
-
 const currentText = computed(() => promoTexts[currentTextIndex.value])
 
 const nextText = () => {
@@ -32,11 +30,11 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="w-full bg-accent-blue text-white px-6 py-2 flex items-center justify-center">
+  <div class="flex w-full items-center justify-center bg-accent-blue px-6 py-2 text-white">
     <div class="relative overflow-hidden">
       <p
         v-html="currentText"
-        class="transition-transform duration-300 ease-in-out text-sm"
+        class="text-sm transition-transform duration-300 ease-in-out"
         :class="isAnimatingOut ? 'animate-slide-out' : 'animate-slide-in'"
       ></p>
     </div>

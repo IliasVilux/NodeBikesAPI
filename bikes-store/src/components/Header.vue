@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue'
+
 import Svg from '@/components/Svg.vue'
 import SearchBar from '@/components/SearchBar.vue'
 
@@ -7,9 +8,7 @@ const isMobileMenuOpen = ref(true)
 </script>
 
 <template>
-  <nav
-    class="max-w-5xl lg:text-white mx-auto mt-0 lg:mt-3 lg:ps-7 lg:pe-3 lg:py-2 relative lg:absolute left-0 right-0 lg:border lg:rounded-full backdrop-blur-sm z-10 bg-white lg:bg-transparent"
-  >
+  <nav class="relative z-10 mx-auto mt-0 lg:mt-3 lg:absolute left-0 right-0 max-w-5xl lg:text-white lg:ps-7 lg:pe-3 lg:py-2 bg-white lg:bg-transparent lg:border lg:rounded-full backdrop-blur-sm">
     <div class="flex justify-between">
       <div class="flex gap-x-6 items-center">
         <div>
@@ -69,7 +68,7 @@ const isMobileMenuOpen = ref(true)
       </div>
     </div>
 
-    <div v-if="isMobileMenuOpen" class="lg:hidden absolute w-full bg-white" id="mobile-menu">
+    <div v-if="isMobileMenuOpen" class="absolute w-full bg-white lg:hidden" id="mobile-menu">
       <div class="space-y-1 mx-2 my-5">
         <RouterLink
           :to="{ name: 'bikes' }"

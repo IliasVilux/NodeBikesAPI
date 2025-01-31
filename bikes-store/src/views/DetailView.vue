@@ -1,8 +1,7 @@
 <script setup>
-import { ref } from 'vue'
-import axios from 'axios'
-import { onMounted } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
+import axios from 'axios'
 
 import BikeCard from '@/components/BikeCard.vue'
 import BikeSpecs from '@/components/BikeSpecs.vue'

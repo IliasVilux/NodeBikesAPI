@@ -1,7 +1,7 @@
 <script setup>
+import { ref, onMounted } from 'vue'
 import axios from 'axios'
-import { onMounted } from 'vue'
-import { ref } from 'vue'
+
 import PromoHeader from '@/components/PromoHeader.vue'
 import Hero from '@/components/Hero.vue'
 import Header from '@/components/Header.vue'

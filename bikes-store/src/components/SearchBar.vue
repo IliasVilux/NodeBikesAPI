@@ -1,5 +1,6 @@
 <script setup>
 import { computed, onMounted, onUnmounted, ref } from 'vue'
+
 import Svg from '@/components/Svg.vue'
 
 const isOpen = ref(false)
@@ -18,6 +19,7 @@ const isAnimatingOut = ref(false)
 const searchQuery = ref('')
 const currentKeyword = computed(() => keywords[currentIndex.value])
 let intervalId
+
 onMounted(() => {
   intervalId = setInterval(nextKeyword, 4000)
 })
@@ -45,10 +47,10 @@ const nextKeyword = () => {
 
     <div
       v-if="isOpen"
-      class="w-full lg:w-64 h-full flex items-center bg-white border border-border-light rounded-full me-2 lg:me-0 ps-4 pe-2 md:ps-3 transition"
+      class="flex items-center w-full lg:w-64 h-full bg-white border border-border-light rounded-full me-2 lg:me-0 ps-4 pe-2 md:ps-3 transition"
     >
       <div
-        class="text-text-secondary absolute pointer-events-none"
+        class="absolute text-text-secondary pointer-events-none"
         :class="{ 'opacity-0': searchQuery }"
       >
         <span>Busca </span>
@@ -61,9 +63,9 @@ const nextKeyword = () => {
 
       <input
         v-model="searchQuery"
-        placeholder=""
         autocomplete="off"
-        class="text-text-primary size-full bg-transparent focus:outline-none"
+        placeholder=""
+        class="w-full bg-transparent text-text-primary focus:outline-none"
       />
 
       <button @click="toggleSearch">
