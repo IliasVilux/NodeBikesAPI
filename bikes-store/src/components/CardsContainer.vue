@@ -29,7 +29,7 @@ const itemsTranslate = {
 </script>
 
 <template>
-  <div class="max-w-screen-2xl mx-auto px-4 mt-12">
+  <div class="max-w-screen-2xl mx-auto px-4 mt-28">
     <div class="flex justify-between items-baseline mb-8">
       <h4 class="text-2xl">
         Buscar por <span class="capitalize">{{ itemsTranslate[itemsType] }}</span>
