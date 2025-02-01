@@ -6,6 +6,7 @@ import PromoHeader from '@/components/PromoHeader.vue'
 import Hero from '@/components/Hero.vue'
 import Header from '@/components/Header.vue'
 import CardsContainer from '@/components/CardsContainer.vue'
+import Bento from '@/components/Bento.vue'
 import Footer from '@/components/Footer.vue'
 
 const brands = ref([])
@@ -45,7 +46,7 @@ onMounted(fetchData)
   <Header />
   <Hero />
   <CardsContainer :items="brands" itemsType="brand" :loading="loadingBrands" :error="errorBrands" />
-  <!-- Bento -->
+  <Bento />
   <CardsContainer
     :items="categories"
     itemsType="category"
