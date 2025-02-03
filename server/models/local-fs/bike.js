@@ -7,7 +7,7 @@ const brands = require('../../json/brands.json')
 const categories = require('../../json/categories.json')
 
 export class BikeModel {
-  static async getAll ({ marca, categoria }) {
+  static async getAll ({ marca, categoria, search }) {
     let filteredBikes = bikes
 
     if (marca) {
@@ -20,6 +20,15 @@ export class BikeModel {
       const category = categories.find(category => category.id === Number(categoria))
       if (!category) return []
       filteredBikes = filteredBikes.filter(bike => bike.category_id === category.id)
+    }
+
+    if (search) {
+      const searchLower = search.toLowerCase()
+      filteredBikes = filteredBikes.filter(bike => {
+        const bikeName = bike.name.toLowerCase()
+        const brand = brands.find(b => b.id === bike.brand_id)?.name.toLowerCase() || ''
+        return bikeName.includes(searchLower) || brand.includes(searchLower)
+      })
     }
 
     return filteredBikes
