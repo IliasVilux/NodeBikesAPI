@@ -1,7 +1,10 @@
 <script setup>
 import { computed, onMounted, onUnmounted, ref } from 'vue'
+import { useRouter } from 'vue-router'
 
 import Svg from '@/components/common/Svg.vue'
+
+const router = useRouter()
 
 const isOpen = ref(false)
 const searchInput = ref(null)
@@ -33,6 +36,13 @@ const nextKeyword = () => {
     isAnimatingOut.value = false
     currentIndex.value = (currentIndex.value + 1) % keywords.length
   }, 300)
+}
+
+const submitSearch = () => {
+  if (searchQuery.value.trim() !== '') {
+    router.push({ name: 'bikes', query: { search: searchQuery.value } })
+    isOpen.value = false // Cierra el buscador después de la búsqueda
+  }
 }
 </script>
 
@@ -66,6 +76,7 @@ const nextKeyword = () => {
         autocomplete="off"
         placeholder=""
         class="w-full bg-transparent text-text-primary focus:outline-none"
+        @keyup.enter="submitSearch"
       />
 
       <button @click="toggleSearch">
