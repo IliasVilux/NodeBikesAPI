@@ -1,10 +1,27 @@
 [
     {
-        "id": 1,
-        "name": "Racing"
+      "id": 1,
+      "name": "Racing"
     },
     {
-        "id": 2,
-        "name": "Trail"
+      "id": 2,
+      "name": "Trail"
+    },
+    {
+      "id": 3,
+      "name": "Naked"
+    },
+    {
+      "id": 4,
+      "name": "Sport-Touring"
+    },
+    {
+      "id": 5,
+      "name": "Maxi-Scooter"
+    },
+    {
+      "id": 6,
+      "name": "Custom"
     }
-]
+  ]
+  

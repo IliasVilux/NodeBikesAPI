@@ -1,10 +1,47 @@
 [
     {
-        "id": 1,
-        "name": "Yamaha"
+      "id": 1,
+      "name": "Yamaha"
     },
     {
-        "id": 2,
-        "name": "Honda"
+      "id": 2,
+      "name": "Honda"
+    },
+    {
+      "id": 3,
+      "name": "Triumph"
+    },
+    {
+      "id": 4,
+      "name": "Suzuki"
+    },
+    {
+      "id": 5,
+      "name": "MV-Agusta"
+    },
+    {
+      "id": 6,
+      "name": "KTM"
+    },
+    {
+      "id": 7,
+      "name": "Kawasaki"
+    },
+    {
+      "id": 8,
+      "name": "Harley-Davidson"
+    },
+    {
+      "id": 9,
+      "name": "Ducati"
+    },
+    {
+      "id": 10,
+      "name": "BMW"
+    },
+    {
+      "id": 11,
+      "name": "Aprilia"
     }
-]
+  ]
+  

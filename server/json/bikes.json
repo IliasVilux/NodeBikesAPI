@@ -1,21 +1,164 @@
 [
-    {
-      "id": "b3f5c8a3d7f9e01",
-      "name": "YZF-R1",
-      "year": 2023,
-      "poster": "https://example.com/images/yamaha_r1.jpg",
-      "engine_capacity": 998,
-      "brand_id": 1,
-      "category_id": 1
-    },
-    {
-      "id": "b3f5c8a3d7f9e01",
-      "name": "Transalp",
-      "year": 2023,
-      "poster": "https://example.com/images/honda_transalp.jpg",
-      "engine_capacity": 756,
-      "brand_id": 2,
-      "category_id": 2
-    }
-  ]
-  
+  {
+    "id": "b3f5c8a3d7f9e01",
+    "name": "YZF-R1",
+    "year": 2023,
+    "poster": "https://example.com/images/yamaha_r1.jpg",
+    "engine_capacity": 998,
+    "brand_id": 1,
+    "category_id": 1
+  },
+  {
+    "id": "b3f5c8a3d7f9e02",
+    "name": "Transalp",
+    "year": 2023,
+    "poster": "https://example.com/images/honda_transalp.jpg",
+    "engine_capacity": 756,
+    "brand_id": 2,
+    "category_id": 2
+  },
+  {
+    "id": "b3f5c8a3d7f9e03",
+    "name": "Tracer 9 GT",
+    "year": 2023,
+    "poster": "https://example.com/images/yamaha_tracer_9.jpg",
+    "engine_capacity": 890,
+    "brand_id": 1,
+    "category_id": 4
+  },
+  {
+    "id": "b3f5c8a3d7f9e04",
+    "name": "MT-07",
+    "year": 2023,
+    "poster": "https://example.com/images/yamaha_mt07.jpg",
+    "engine_capacity": 689,
+    "brand_id": 1,
+    "category_id": 3
+  },
+  {
+    "id": "b3f5c8a3d7f9e05",
+    "name": "Africa Twin",
+    "year": 2023,
+    "poster": "https://example.com/images/honda_africa_twin.jpg",
+    "engine_capacity": 1084,
+    "brand_id": 2,
+    "category_id": 2
+  },
+  {
+    "id": "b3f5c8a3d7f9e06",
+    "name": "Gold Wing",
+    "year": 2023,
+    "poster": "https://example.com/images/honda_goldwing.jpg",
+    "engine_capacity": 1833,
+    "brand_id": 2,
+    "category_id": 4
+  },
+  {
+    "id": "b3f5c8a3d7f9e07",
+    "name": "Speed Triple 1200 RS",
+    "year": 2023,
+    "poster": "https://example.com/images/triumph_speed_triple.jpg",
+    "engine_capacity": 1160,
+    "brand_id": 3,
+    "category_id": 3
+  },
+  {
+    "id": "b3f5c8a3d7f9e08",
+    "name": "Suzuki V-Strom 1050",
+    "year": 2023,
+    "poster": "https://example.com/images/suzuki_v_strom.jpg",
+    "engine_capacity": 1037,
+    "brand_id": 4,
+    "category_id": 2
+  },
+  {
+    "id": "b3f5c8a3d7f9e09",
+    "name": "MV Agusta Turismo Veloce",
+    "year": 2023,
+    "poster": "https://example.com/images/mv_agusta_turismo.jpg",
+    "engine_capacity": 798,
+    "brand_id": 5,
+    "category_id": 4
+  },
+  {
+    "id": "b3f5c8a3d7f9e10",
+    "name": "KTM 1290 Super Adventure R",
+    "year": 2023,
+    "poster": "https://example.com/images/ktm_1290_super_adventure.jpg",
+    "engine_capacity": 1301,
+    "brand_id": 6,
+    "category_id": 2
+  },
+  {
+    "id": "b3f5c8a3d7f9e11",
+    "name": "Kawasaki Z900",
+    "year": 2023,
+    "poster": "https://example.com/images/kawasaki_z900.jpg",
+    "engine_capacity": 948,
+    "brand_id": 7,
+    "category_id": 3
+  },
+  {
+    "id": "b3f5c8a3d7f9e12",
+    "name": "Harley-Davidson Sportster S",
+    "year": 2023,
+    "poster": "https://example.com/images/harley_sportster.jpg",
+    "engine_capacity": 1252,
+    "brand_id": 8,
+    "category_id": 4
+  },
+  {
+    "id": "b3f5c8a3d7f9e13",
+    "name": "Ducati Panigale V2",
+    "year": 2023,
+    "poster": "https://example.com/images/ducati_panigale_v2.jpg",
+    "engine_capacity": 955,
+    "brand_id": 9,
+    "category_id": 1
+  },
+  {
+    "id": "b3f5c8a3d7f9e14",
+    "name": "BMW R1250 GS",
+    "year": 2023,
+    "poster": "https://example.com/images/bmw_r1250gs.jpg",
+    "engine_capacity": 1254,
+    "brand_id": 10,
+    "category_id": 2
+  },
+  {
+    "id": "b3f5c8a3d7f9e15",
+    "name": "Aprilia Tuono V4",
+    "year": 2023,
+    "poster": "https://example.com/images/aprilia_tuono_v4.jpg",
+    "engine_capacity": 1077,
+    "brand_id": 11,
+    "category_id": 3
+  },
+  {
+    "id": "b3f5c8a3d7f9e16",
+    "name": "Kawasaki Ninja 1000SX",
+    "year": 2023,
+    "poster": "https://example.com/images/kawasaki_ninja_1000sx.jpg",
+    "engine_capacity": 1043,
+    "brand_id": 7,
+    "category_id": 4
+  },
+  {
+    "id": "b3f5c8a3d7f9e17",
+    "name": "BMW S1000RR",
+    "year": 2023,
+    "poster": "https://example.com/images/bmw_s1000rr.jpg",
+    "engine_capacity": 999,
+    "brand_id": 10,
+    "category_id": 1
+  },
+  {
+    "id": "b3f5c8a3d7f9e18",
+    "name": "Harley-Davidson Low Rider S",
+    "year": 2023,
+    "poster": "https://example.com/images/harley_low_rider_s.jpg",
+    "engine_capacity": 1868,
+    "brand_id": 8,
+    "category_id": 4
+  }
+]
