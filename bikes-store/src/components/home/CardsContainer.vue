@@ -1,7 +1,7 @@
 <script setup>
 import { RouterLink } from 'vue-router'
 
-import GlobalCard from '@/components/GlobalCard.vue'
+import GlobalCard from '@/components/home/GlobalCard.vue'
 
 defineProps({
   items: {

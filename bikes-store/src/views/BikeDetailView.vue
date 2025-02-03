@@ -3,8 +3,8 @@ import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import axios from 'axios'
 
-import BikeCard from '@/components/BikeCard.vue'
-import BikeSpecs from '@/components/BikeSpecs.vue'
+import BikeCard from '@/components/common/BikeCard.vue'
+import BikeSpecs from '@/components/bike-detail/BikeSpecs.vue'
 
 const route = useRoute()
 

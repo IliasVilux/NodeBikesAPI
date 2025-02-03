@@ -1,7 +1,7 @@
 <script setup>
 import { RouterLink } from 'vue-router'
 
-import Svg from '@/components/Svg.vue'
+import Svg from '@/components/common/Svg.vue'
 
 const { item, type } = defineProps({
   item: {

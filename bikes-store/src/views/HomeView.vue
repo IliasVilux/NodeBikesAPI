@@ -2,12 +2,12 @@
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
 
-import PromoHeader from '@/components/PromoHeader.vue'
-import Hero from '@/components/Hero.vue'
-import Header from '@/components/Header.vue'
-import CardsContainer from '@/components/CardsContainer.vue'
-import Bento from '@/components/Bento.vue'
-import Footer from '@/components/Footer.vue'
+import PromoHeader from '@/components/common/PromoHeader.vue'
+import Hero from '@/components/home/Hero.vue'
+import Header from '@/components/common/Header.vue'
+import CardsContainer from '@/components/home/CardsContainer.vue'
+import Bento from '@/components/home/Bento.vue'
+import Footer from '@/components/common/Footer.vue'
 
 const brands = ref([])
 const loadingBrands = ref(false)

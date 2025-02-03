@@ -1,7 +1,7 @@
 <script setup>
 import { computed, onMounted, onUnmounted, ref } from 'vue'
 
-import Svg from '@/components/Svg.vue'
+import Svg from '@/components/common/Svg.vue'
 
 const isOpen = ref(false)
 const searchInput = ref(null)

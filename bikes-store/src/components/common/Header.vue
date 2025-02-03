@@ -1,8 +1,8 @@
 <script setup>
 import { ref } from 'vue'
 
-import Svg from '@/components/Svg.vue'
-import SearchBar from '@/components/SearchBar.vue'
+import Svg from '@/components/common/Svg.vue'
+import SearchBar from '@/components/common/SearchBar.vue'
 
 const isMobileMenuOpen = ref(true)
 </script>

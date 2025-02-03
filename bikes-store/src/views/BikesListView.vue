@@ -3,9 +3,9 @@ import { ref, watch, onMounted } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 import axios from 'axios'
 
-import Filter from '@/components/Filter.vue'
-import BikeCard from '@/components/BikeCard.vue'
-import BrandHero from '@/components/BrandHero.vue'
+import Filter from '@/components/bikes-list/Filter.vue'
+import BikeCard from '@/components/common/BikeCard.vue'
+import BrandHero from '@/components/bikes-list/BrandHero.vue'
 
 const route = useRoute()
 
