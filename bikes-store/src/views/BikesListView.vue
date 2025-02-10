@@ -3,6 +3,8 @@ import { ref, watch, onMounted } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 import axios from 'axios'
 
+import PromoHeader from '@/components/common/PromoHeader.vue'
+import Header from '@/components/common/Header.vue'
 import Filter from '@/components/bikes-list/Filter.vue'
 import BikeCard from '@/components/common/BikeCard.vue'
 import BrandHero from '@/components/bikes-list/BrandHero.vue'
@@ -42,6 +44,9 @@ watch(() => route.query.marca, fetchData)
 </script>
 
 <template>
+  <PromoHeader />
+  <Header />
+
   <div v-if="loading">Loading...</div>
   <div v-else-if="error">Error: {{ error.message }}</div>
   <div v-else>

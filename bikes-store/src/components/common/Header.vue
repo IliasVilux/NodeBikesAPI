@@ -4,12 +4,22 @@ import { ref } from 'vue'
 import Svg from '@/components/common/Svg.vue'
 import SearchBar from '@/components/common/SearchBar.vue'
 
+defineProps({
+  isAbsolute: {
+    type: Boolean,
+    default: false,
+  },
+})
 const isMobileMenuOpen = ref(true)
 </script>
 
 <template>
   <nav
-    class="relative z-10 mx-auto mt-0 lg:mt-3 lg:absolute left-0 right-0 max-w-5xl lg:text-white lg:ps-7 lg:pe-3 lg:py-2 bg-white lg:bg-transparent lg:border lg:rounded-full backdrop-blur-sm"
+    class="relative z-50 mx-auto mt-0 lg:mt-3 left-0 right-0 max-w-5xl lg:ps-7 lg:pe-3 lg:py-2 bg-white backdrop-blur-sm border lg:rounded-full"
+    :class="{
+      'lg:absolute lg:text-white lg:bg-transparent': isAbsolute,
+      'lg:bg-white': !isAbsolute
+    }"
   >
     <div class="flex justify-between">
       <div class="flex gap-x-6 items-center">
@@ -23,11 +33,11 @@ const isMobileMenuOpen = ref(true)
           >
             <span class="absolute -inset-0.5"></span>
             <span class="sr-only">Open main menu</span>
-            <Svg v-if="!isMobileMenuOpen" name="menu" class="size-5 text-text-primary" />
-            <Svg v-else name="cross" class="size-6 text-text-primary lg:text-white" />
+            <Svg v-if="!isMobileMenuOpen" name="menu" class="size-5" />
+            <Svg v-else name="cross" class="size-6" />
           </button>
           <RouterLink to="/" class="hidden lg:flex">
-            <Svg name="logo" class="size-9 text-text-primary lg:text-white" />
+            <Svg name="logo" class="size-9" :class="{ 'lg:text-white': isAbsolute }" />
           </RouterLink>
         </div>
         <div class="hidden lg:flex">
@@ -45,22 +55,24 @@ const isMobileMenuOpen = ref(true)
         <SearchBar />
 
         <div class="hidden lg:block">
-          <div v-if="false === false">
+          <div v-if="false === true">
             <RouterLink
               :to="{ name: 'home' }"
               class="hover:text-accent-blue-light transition duration-300 me-4"
               >Cerrar sesión
             </RouterLink>
           </div>
-          <div v-else class="text-white">
+          <div v-else>
             <RouterLink
               :to="{ name: 'home' }"
-              class="hover:text-accent-blue-light transition duration-300"
+              class="transition duration-300"
+              :class="{ 'hover:text-accent-blue-light': isAbsolute, 'hover:text-text-secondary': !isAbsolute }"
               >Iniciar sesión
             </RouterLink>
             <RouterLink :to="{ name: 'home' }">
               <button
                 class="whitespace-nowrap bg-accent-blue hover:bg-accent-blue-light hover:text-accent-blue transition duration-300 rounded-full py-1 px-4 ms-3"
+                :class="{ 'text-white': !isAbsolute }"
               >
                 Registrarse
               </button>
