@@ -4,12 +4,22 @@ import { ref } from 'vue'
 import Svg from '@/components/common/Svg.vue'
 import SearchBar from '@/components/common/SearchBar.vue'
 
-const isMobileMenuOpen = ref(true)
+defineProps({
+  isAbsolute: {
+    type: Boolean,
+    default: false,
+  },
+})
+const isMobileMenuOpen = ref(false)
 </script>
 
 <template>
   <nav
-    class="relative z-10 mx-auto mt-0 lg:mt-3 lg:absolute left-0 right-0 max-w-5xl lg:text-white lg:ps-7 lg:pe-3 lg:py-2 bg-white lg:bg-transparent lg:border lg:rounded-full backdrop-blur-sm"
+    class="relative z-50 mx-auto mt-0 lg:mt-3 left-0 right-0 max-w-5xl lg:ps-7 lg:pe-3 lg:py-2 lg:mb-3 bg-white backdrop-blur-sm border lg:rounded-full"
+    :class="{
+      'lg:absolute lg:text-white lg:bg-transparent': isAbsolute,
+      'lg:bg-white': !isAbsolute
+    }"
   >
     <div class="flex justify-between">
       <div class="flex gap-x-6 items-center">
