@@ -40,10 +40,7 @@ const fetchData = async () => {
   }
 }
 onMounted(fetchData)
-watch(
-  () => route.query,
-  fetchData,
-)
+watch(() => route.query, fetchData)
 </script>
 
 <template>

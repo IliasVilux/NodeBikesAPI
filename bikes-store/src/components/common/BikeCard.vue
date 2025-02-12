@@ -27,7 +27,9 @@ onMounted(fetchData)
 </script>
 
 <template>
-  <div class="group flex flex-col overflow-hidden rounded-2xl border border-border-light bg-white transition duration-300 hover:-translate-y-1">
+  <div
+    class="group flex flex-col overflow-hidden rounded-2xl border border-border-light bg-white transition duration-300 hover:-translate-y-1"
+  >
     <RouterLink :to="{ name: 'bikes', query: { marca: bike.brand_id } }">
       <h4
         v-if="brand"
@@ -52,4 +54,3 @@ onMounted(fetchData)
     </RouterLink>
   </div>
 </template>
-

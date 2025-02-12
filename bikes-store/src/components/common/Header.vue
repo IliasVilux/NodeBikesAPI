@@ -18,7 +18,7 @@ const isMobileMenuOpen = ref(false)
     class="relative z-50 mx-auto mt-0 lg:mb-3 lg:mt-3 left-0 right-0 max-w-5xl lg:ps-7 lg:pe-3 lg:py-2 bg-white backdrop-blur-sm border lg:rounded-full"
     :class="{
       'lg:absolute lg:text-white lg:bg-transparent': isAbsolute,
-      'lg:bg-white': !isAbsolute
+      'lg:bg-white': !isAbsolute,
     }"
   >
     <div class="flex justify-between">
@@ -66,7 +66,10 @@ const isMobileMenuOpen = ref(false)
             <RouterLink
               :to="{ name: 'home' }"
               class="transition duration-300"
-              :class="{ 'hover:text-accent-blue-light': isAbsolute, 'hover:text-text-secondary': !isAbsolute }"
+              :class="{
+                'hover:text-accent-blue-light': isAbsolute,
+                'hover:text-text-secondary': !isAbsolute,
+              }"
               >Iniciar sesión
             </RouterLink>
             <RouterLink :to="{ name: 'home' }">
