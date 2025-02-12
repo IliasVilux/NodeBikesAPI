@@ -40,7 +40,10 @@ const fetchData = async () => {
   }
 }
 onMounted(fetchData)
-watch(() => route.query.marca, fetchData)
+watch(
+  () => route.query,
+  fetchData,
+)
 </script>
 
 <template>
@@ -54,11 +57,14 @@ watch(() => route.query.marca, fetchData)
     <Filter />
 
     <!-- ORDER BY -->
-    <div>Order by:</div>
 
-    <!-- LIST OF BIKES -->
-    <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-5 gap-2">
-      <BikeCard v-for="bike in bikes" :key="bike.id" :bike="bike" />
+    <div class="max-w-screen-2xl mx-auto px-4">
+      <div>Order by:</div>
+
+      <!-- LIST OF BIKES -->
+      <div class="mt-28 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+        <BikeCard v-for="bike in bikes" :key="bike.id" :bike="bike" />
+      </div>
     </div>
 
     <!-- LIST IF BRANDS -->

@@ -27,27 +27,29 @@ onMounted(fetchData)
 </script>
 
 <template>
-  <div class="bg-white rounded-lg overflow-hidden flex flex-col relative">
+  <div class="group flex flex-col overflow-hidden rounded-2xl border border-border-light bg-white transition duration-300 hover:-translate-y-1">
     <RouterLink :to="{ name: 'bikes', query: { marca: bike.brand_id } }">
       <h4
         v-if="brand"
-        class="text-xl text-white uppercase font-semibold bg-accent rounded-md px-4 py-2 relative z-10"
+        class="z-10 bg-accent-blue px-4 py-2 text-xl font-semibold uppercase text-white hover:text-accent-blue-light transition duration-300"
       >
         {{ brand }}
       </h4>
     </RouterLink>
-    <img
-      src=""
-      :alt="'Imagen de la moto ' + brand + ' ' + bike.name"
-      class="w-full aspect-[4/3] object-cover flex-grow bg-[#D9D9D9] -mt-1"
-    />
+
     <RouterLink :to="{ name: 'detail', params: { id: bike.id } }">
-      <div class="px-4 py-2 mt-auto hover:text-accent transition duration-300">
-        <p class="text-sm text-text-secondary font-light">
+      <img
+        src=""
+        :alt="'Imagen de la moto ' + brand + ' ' + bike.name"
+        class="w-full flex-grow bg-[#D9D9D9] object-cover aspect-[4/3] -mt-1"
+      />
+      <div class="mt-auto px-4 py-2 transition duration-300 group-hover:text-accent-blue">
+        <p class="text-sm font-light text-text-secondary">
           {{ bike.year }} | {{ bike.engine_capacity }}
         </p>
-        <h4 class="text-xl font-semibold pb-7">{{ bike.name }}</h4>
+        <h4 class="pb-7 text-xl font-semibold">{{ bike.name }}</h4>
       </div>
     </RouterLink>
   </div>
 </template>
+
