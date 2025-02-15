@@ -48,7 +48,7 @@ export class BikeModel {
         case '600-800':
           filteredBikes = filteredBikes.filter(bike => bike.engine_capacity >= 600 && bike.engine_capacity <= 800)
           break
-        case '+900':
+        case '900':
           filteredBikes = filteredBikes.filter(bike => bike.engine_capacity >= 900)
           break
       }

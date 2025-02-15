@@ -45,7 +45,7 @@ const engineCapacities = [
   { id: '200-400', name: '200-400cc' },
   { id: '400-600', name: '400-600cc' },
   { id: '600-800', name: '600-800cc' },
-  { id: '+900', name: '+900cc' },
+  { id: '900', name: '+900cc' },
 ]
 const filters = ref([
   { id: 'category', name: 'Categoría', apiParam: 'categoria', options: [] },

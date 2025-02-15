@@ -65,7 +65,7 @@ export class BikeModel {
         case '600-800':
           conditions.push('bike.engine_capacity BETWEEN 600 AND 800')
           break
-        case '+900':
+        case '900':
           conditions.push('bike.engine_capacity >= 900')
           break
       }
