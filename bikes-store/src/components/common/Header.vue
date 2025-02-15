@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { onMounted, onUnmounted, ref } from 'vue'
 
 import Svg from '@/components/common/Svg.vue'
 import SearchBar from '@/components/common/SearchBar.vue'
@@ -11,10 +11,26 @@ defineProps({
   },
 })
 const isMobileMenuOpen = ref(false)
+const headerRef = ref(null)
+
+const handleClickOutside = (event) => {
+  if (headerRef.value && !headerRef.value.contains(event.target)) {
+    isMobileMenuOpen.value = false
+  }
+}
+
+onMounted(() => {
+  document.addEventListener('click', handleClickOutside)
+})
+
+onUnmounted(() => {
+  document.removeEventListener('click', handleClickOutside)
+})
 </script>
 
 <template>
   <nav
+    ref="headerRef"
     class="relative z-50 mx-auto mt-0 lg:mb-3 lg:mt-3 left-0 right-0 max-w-5xl lg:ps-7 lg:pe-3 lg:py-2 bg-white backdrop-blur-sm border lg:rounded-full"
     :class="{
       'lg:absolute lg:text-white lg:bg-transparent': isAbsolute,
