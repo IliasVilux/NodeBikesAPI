@@ -118,22 +118,27 @@ onMounted(fetchData)
         </div>
       </div>
 
-      <div v-if="Object.keys(route.query).length" class="flex flex-wrap justify-center gap-2 pt-1 pb-4 text-white">
+      <div
+        v-if="Object.keys(route.query).length"
+        class="flex flex-wrap justify-center gap-2 pt-1 pb-4 text-white"
+      >
         <RouterLink
           v-for="(routeParam, key, index) in route.query"
           :key="index"
           :to="{
             name: 'bikes',
-            query: Object.fromEntries(Object.entries(route.query).filter(([paramKey]) => paramKey !== key))
+            query: Object.fromEntries(
+              Object.entries(route.query).filter(([paramKey]) => paramKey !== key),
+            ),
           }"
           class="flex items-center gap-3 rounded-full bg-accent-blue px-4 py-1 uppercase"
         >
           <p v-if="filters[0].options.length && key == 'categoria'">
-            {{ filters[0].options.find(e => e.id == routeParam)?.name }}
+            {{ filters[0].options.find((e) => e.id == routeParam)?.name }}
           </p>
           <p v-else-if="key == 'cilindrada'">{{ routeParam }}cc</p>
           <p v-else-if="filters[2].options.length && key == 'marca'">
-            {{ filters[2].options.find(e => e.id == routeParam)?.name }}
+            {{ filters[2].options.find((e) => e.id == routeParam)?.name }}
           </p>
           <Svg name="cross" class="size-5 cursor-pointer" />
         </RouterLink>
