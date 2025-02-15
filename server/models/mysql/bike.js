@@ -23,7 +23,7 @@ const connectionString = {
 const connection = await mysql.createConnection(connectionString)
 
 export class BikeModel {
-  static async getAll ({ marca, categoria, search }) {
+  static async getAll ({ marca, categoria, search, cilindrada }) {
     let query = `
       SELECT bike.* 
       FROM bike
@@ -46,6 +46,29 @@ export class BikeModel {
       conditions.push('(bike.name LIKE ? OR brand.name LIKE ?)')
       const searchTerm = `%${search}%`
       params.push(searchTerm, searchTerm)
+    }
+
+    if (cilindrada) {
+      switch (cilindrada) {
+        case '49':
+          conditions.push('bike.engine_capacity = 49')
+          break
+        case '125':
+          conditions.push('bike.engine_capacity = 125')
+          break
+        case '200-400':
+          conditions.push('bike.engine_capacity BETWEEN 200 AND 400')
+          break
+        case '400-600':
+          conditions.push('bike.engine_capacity BETWEEN 400 AND 600')
+          break
+        case '600-800':
+          conditions.push('bike.engine_capacity BETWEEN 600 AND 800')
+          break
+        case '+900':
+          conditions.push('bike.engine_capacity >= 900')
+          break
+      }
     }
 
     if (conditions.length) {

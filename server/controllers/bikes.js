@@ -6,8 +6,8 @@ export class BikeController {
   }
 
   getAll = async (req, res) => {
-    const { marca, categoria, search } = req.query
-    const bikes = await this.bikeModel.getAll({ marca, categoria, search })
+    const { marca, categoria, search, cilindrada } = req.query
+    const bikes = await this.bikeModel.getAll({ marca, categoria, search, cilindrada })
     res.json(bikes)
   }
 

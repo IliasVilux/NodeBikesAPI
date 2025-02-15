@@ -7,7 +7,7 @@ const brands = require('../../json/brands.json')
 const categories = require('../../json/categories.json')
 
 export class BikeModel {
-  static async getAll ({ marca, categoria, search }) {
+  static async getAll ({ marca, categoria, search, cilindrada }) {
     let filteredBikes = bikes
 
     if (marca) {
@@ -29,6 +29,29 @@ export class BikeModel {
         const brand = brands.find(b => b.id === bike.brand_id)?.name.toLowerCase() || ''
         return bikeName.includes(searchLower) || brand.includes(searchLower)
       })
+    }
+
+    if (cilindrada) {
+      switch (cilindrada) {
+        case '49':
+          filteredBikes = filteredBikes.filter(bike => bike.engine_capacity === 49)
+          break
+        case '125':
+          filteredBikes = filteredBikes.filter(bike => bike.engine_capacity === 125)
+          break
+        case '200-400':
+          filteredBikes = filteredBikes.filter(bike => bike.engine_capacity >= 200 && bike.engine_capacity <= 400)
+          break
+        case '400-600':
+          filteredBikes = filteredBikes.filter(bike => bike.engine_capacity >= 400 && bike.engine_capacity <= 600)
+          break
+        case '600-800':
+          filteredBikes = filteredBikes.filter(bike => bike.engine_capacity >= 600 && bike.engine_capacity <= 800)
+          break
+        case '+900':
+          filteredBikes = filteredBikes.filter(bike => bike.engine_capacity >= 900)
+          break
+      }
     }
 
     return filteredBikes
