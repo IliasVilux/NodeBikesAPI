@@ -32,7 +32,7 @@ CREATE TABLE bike (
 INSERT INTO brand (name) VALUES 
 ('Yamaha'), ('Kawasaki'), ('Honda'), ('Suzuki'), 
 ('Ducati'), ('BMW'), ('KTM'), ('Triumph'), 
-('Aprilia'), ('Harley-Davidson'), ('MV Agusta');
+('Aprilia'), ('Harley-Davidson'), ('MV-Agusta');
 
 -- Insertar categorías
 INSERT INTO category (name) VALUES 
