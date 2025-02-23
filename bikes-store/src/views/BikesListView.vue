@@ -19,7 +19,7 @@ const error = ref(null)
 const fetchData = async () => {
   loading.value = true
   try {
-    const { marca, categoria, search, cilindrada } = route.query
+    const { marca, categoria, search, cilindrada, order_by } = route.query
 
     let url = `${import.meta.env.VITE_API_URL}/motos`
     if (marca) {
@@ -33,6 +33,9 @@ const fetchData = async () => {
     }
     if (search) {
       url += `?search=${search}`
+    }
+    if (order_by) {
+      url += `?order_by=${order_by}`
     }
 
     const response = await axios.get(url)
