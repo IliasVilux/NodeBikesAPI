@@ -1,6 +1,6 @@
 <script setup>
 import { ref, watch, onMounted } from 'vue'
-import { RouterLink, useRoute } from 'vue-router'
+import { useRoute } from 'vue-router'
 import axios from 'axios'
 
 import PromoHeader from '@/components/common/PromoHeader.vue'
@@ -19,7 +19,7 @@ const error = ref(null)
 const fetchData = async () => {
   loading.value = true
   try {
-    const { marca, categoria, search } = route.query
+    const { marca, categoria, search, cilindrada } = route.query
 
     let url = `${import.meta.env.VITE_API_URL}/motos`
     if (marca) {
@@ -27,6 +27,9 @@ const fetchData = async () => {
     }
     if (categoria) {
       url += `?categoria=${categoria}`
+    }
+    if (cilindrada) {
+      url += `?cilindrada=${cilindrada}`
     }
     if (search) {
       url += `?search=${search}`
