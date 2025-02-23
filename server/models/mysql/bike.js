@@ -23,7 +23,7 @@ const connectionString = {
 const connection = await mysql.createConnection(connectionString)
 
 export class BikeModel {
-  static async getAll ({ marca, categoria, search, cilindrada }) {
+  static async getAll ({ marca, categoria, search, cilindrada, orderBy }) {
     let query = `
       SELECT bike.* 
       FROM bike
@@ -67,6 +67,23 @@ export class BikeModel {
           break
         case '900':
           conditions.push('bike.engine_capacity >= 900')
+          break
+      }
+    }
+
+    if (orderBy) {
+      switch (orderBy) {
+        case 'year_asc':
+          conditions.push('ORDER BY bike.year ASC')
+          break
+        case 'year_desc':
+          conditions.push('ORDER BY bike.year DESC')
+          break
+        case 'engine_capacity_asc':
+          conditions.push('ORDER BY bike.engine_capacity ASC')
+          break
+        case 'engine_capacity_desc':
+          conditions.push('ORDER BY bike.engine_capacity DESC')
           break
       }
     }
@@ -136,8 +153,8 @@ export class BikeModel {
       if (updates.length === 0) return bike[0]
 
       await connection.query(
-                `UPDATE bike SET ${updates.join(', ')} WHERE id = ?;`,
-                [...values, id]
+        `UPDATE bike SET ${updates.join(', ')} WHERE id = ?;`,
+        [...values, id]
       )
     } catch (error) {
       console.log(error)

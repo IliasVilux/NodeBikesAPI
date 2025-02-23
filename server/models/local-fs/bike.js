@@ -7,7 +7,7 @@ const brands = require('../../json/brands.json')
 const categories = require('../../json/categories.json')
 
 export class BikeModel {
-  static async getAll ({ marca, categoria, search, cilindrada }) {
+  static async getAll ({ marca, categoria, search, cilindrada, orderBy }) {
     let filteredBikes = bikes
 
     if (marca) {
@@ -50,6 +50,23 @@ export class BikeModel {
           break
         case '900':
           filteredBikes = filteredBikes.filter(bike => bike.engine_capacity >= 900)
+          break
+      }
+    }
+
+    if (orderBy) {
+      switch (orderBy) {
+        case 'year_asc':
+          filteredBikes.sort((a, b) => a.year - b.year)
+          break
+        case 'year_desc':
+          filteredBikes.sort((a, b) => b.year - a.year)
+          break
+        case 'engine_capacity_asc':
+          filteredBikes.sort((a, b) => a.engine_capacity - b.engine_capacity)
+          break
+        case 'engine_capacity_desc':
+          filteredBikes.sort((a, b) => b.engine_capacity - a.engine_capacity)
           break
       }
     }
