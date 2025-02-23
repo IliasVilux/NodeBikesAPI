@@ -123,7 +123,11 @@ onMounted(fetchData)
         class="flex flex-wrap justify-center gap-2 pt-1 pb-4 text-white"
       >
         <RouterLink
-          v-for="(routeParam, key, index) in route.query"
+          v-for="(routeParam, key, index) in Object.fromEntries(
+            Object.entries(route.query).filter(([paramKey]) =>
+              filters.some((filter) => filter.apiParam === paramKey),
+            ),
+          )"
           :key="index"
           :to="{
             name: 'bikes',

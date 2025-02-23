@@ -6,6 +6,7 @@ import axios from 'axios'
 import PromoHeader from '@/components/common/PromoHeader.vue'
 import Header from '@/components/common/Header.vue'
 import Filter from '@/components/bikes-list/Filter.vue'
+import Order from '@/components/bikes-list/Order.vue'
 import BikeCard from '@/components/common/BikeCard.vue'
 import BrandHero from '@/components/bikes-list/BrandHero.vue'
 
@@ -56,7 +57,7 @@ watch(() => route.query, fetchData)
     <!-- ORDER BY -->
 
     <div class="max-w-screen-2xl mx-auto px-4">
-      <div>Order by:</div>
+      <Order />
 
       <!-- LIST OF BIKES -->
       <div class="mt-28 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
