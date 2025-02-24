@@ -83,10 +83,10 @@ export class BikeModel {
         case 'year_desc':
           query += ' ORDER BY bike.year DESC'
           break
-        case 'engine_capacity_asc':
+        case 'cilindrada_asc':
           query += ' ORDER BY bike.engine_capacity ASC'
           break
-        case 'engine_capacity_desc':
+        case 'cilindrada_desc':
           query += ' ORDER BY bike.engine_capacity DESC'
           break
       }
