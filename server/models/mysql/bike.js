@@ -74,16 +74,16 @@ export class BikeModel {
     if (orderBy) {
       switch (orderBy) {
         case 'year_asc':
-          conditions.push('ORDER BY bike.year ASC')
+          query += ' ORDER BY bike.year ASC'
           break
         case 'year_desc':
-          conditions.push('ORDER BY bike.year DESC')
+          query += ' ORDER BY bike.year DESC'
           break
         case 'engine_capacity_asc':
-          conditions.push('ORDER BY bike.engine_capacity ASC')
+          query += ' ORDER BY bike.engine_capacity ASC'
           break
         case 'engine_capacity_desc':
-          conditions.push('ORDER BY bike.engine_capacity DESC')
+          query += ' ORDER BY bike.engine_capacity DESC'
           break
       }
     }
