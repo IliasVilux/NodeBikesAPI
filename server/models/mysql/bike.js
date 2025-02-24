@@ -71,25 +71,25 @@ export class BikeModel {
       }
     }
 
+    if (conditions.length) {
+      query += ' WHERE ' + conditions.join(' AND ')
+    }
+
     if (orderBy) {
       switch (orderBy) {
         case 'year_asc':
-          conditions.push('ORDER BY bike.year ASC')
+          conditions.push(' ORDER BY bike.year ASC')
           break
         case 'year_desc':
-          conditions.push('ORDER BY bike.year DESC')
+          conditions.push(' ORDER BY bike.year DESC')
           break
         case 'engine_capacity_asc':
-          conditions.push('ORDER BY bike.engine_capacity ASC')
+          conditions.push(' ORDER BY bike.engine_capacity ASC')
           break
         case 'engine_capacity_desc':
-          conditions.push('ORDER BY bike.engine_capacity DESC')
+          conditions.push(' ORDER BY bike.engine_capacity DESC')
           break
       }
-    }
-
-    if (conditions.length) {
-      query += ' WHERE ' + conditions.join(' AND ')
     }
 
     const [bikes] = await connection.query(query, params)
