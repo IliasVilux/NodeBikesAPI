@@ -9,6 +9,7 @@ import Filter from '@/components/bikes-list/Filter.vue'
 import Order from '@/components/bikes-list/Order.vue'
 import BikeCard from '@/components/common/BikeCard.vue'
 import BrandHero from '@/components/bikes-list/BrandHero.vue'
+import Footer from '@/components/common/Footer.vue'
 
 const route = useRoute()
 
@@ -66,12 +67,16 @@ watch(() => route.query, fetchData)
       <Order />
 
       <!-- LIST OF BIKES -->
-      <div class="mt-28 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-        <BikeCard v-for="bike in bikes" :key="bike.id" :bike="bike" />
+      <div class="mt-28">
+        <p class="mb-3 text-text-secondary">{{bikes.length}} resultados</p>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+          <BikeCard v-for="bike in bikes" :key="bike.id" :bike="bike" />
+        </div>
       </div>
     </div>
 
     <!-- LIST IF BRANDS -->
     <BrandHero />
+    <Footer />
   </div>
 </template>

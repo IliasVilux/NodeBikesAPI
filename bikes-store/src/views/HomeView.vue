@@ -53,5 +53,6 @@ onMounted(fetchData)
     :loading="loadingCategories"
     :error="errorCategories"
   />
+  <div class="mt-28"></div>
   <Footer />
 </template>
