@@ -28,6 +28,7 @@ export class BikeModel {
       SELECT bike.* 
       FROM bike
       JOIN brand ON bike.brand_id = brand.id
+      LEFT JOIN images ON bike.id = images.bike_id AND images.is_main = 1
     `
     const params = []
     const conditions = []
