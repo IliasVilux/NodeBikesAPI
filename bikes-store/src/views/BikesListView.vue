@@ -68,7 +68,7 @@ watch(() => route.query, fetchData)
 
       <!-- LIST OF BIKES -->
       <div class="mt-28">
-        <p class="mb-3 text-text-secondary">{{bikes.length}} resultados</p>
+        <p class="mb-3 text-text-secondary">{{ bikes.length }} resultados</p>
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
           <BikeCard v-for="bike in bikes" :key="bike.id" :bike="bike" />
         </div>

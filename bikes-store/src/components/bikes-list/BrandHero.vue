@@ -26,7 +26,12 @@ onMounted(fetchData)
   <div v-else-if="error">Error: {{ error.message }}</div>
   <div v-else class="bg-accent-blue-light border-y border-border mt-28 py-10">
     <div class="max-w-screen-2xl mx-auto flex flex-wrap gap-4 justify-center">
-      <RouterLink :to="{ name: 'bikes', query: { marca: brand.id } }" v-for="brand in brands" :key="brand.id" class="flex items-center bg-white px-20 rounded-full hover:-translate-y-1 border hover:border-accent-blue transition duration-300">
+      <RouterLink
+        :to="{ name: 'bikes', query: { marca: brand.id } }"
+        v-for="brand in brands"
+        :key="brand.id"
+        class="flex items-center bg-white px-20 rounded-full hover:-translate-y-1 border hover:border-accent-blue transition duration-300"
+      >
         <img
           :src="`/src/assets/images/brand/${brand.name}.png`"
           :alt="brand.name"

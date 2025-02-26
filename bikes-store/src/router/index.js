@@ -27,13 +27,13 @@ const router = createRouter({
       path: '/iniciar-sesion',
       name: 'login',
       component: AuthFormView,
-      props: { mode: 'login' }
+      props: { mode: 'login' },
     },
     {
       path: '/registrarse',
       name: 'register',
       component: AuthFormView,
-      props: { mode: 'register' }
+      props: { mode: 'register' },
     },
   ],
 })

@@ -77,8 +77,12 @@ onUnmounted(() => {
         <SearchBar />
 
         <div class="hidden lg:block">
-          <button v-if="authStore.token" @click="handleLogout"  class="hover:text-accent-blue-light transition duration-300 me-4"
-            >Cerrar sesión
+          <button
+            v-if="authStore.token"
+            @click="handleLogout"
+            class="hover:text-accent-blue-light transition duration-300 me-4"
+          >
+            Cerrar sesión
           </button>
           <div v-else>
             <RouterLink
@@ -117,7 +121,8 @@ onUnmounted(() => {
             v-if="authStore.token"
             @click="handleLogout"
             class="hover:text-accent-orange transition duration-300"
-            >Cerrar sesión
+          >
+            Cerrar sesión
           </button>
           <div v-else class="flex justify-between items-center">
             <RouterLink

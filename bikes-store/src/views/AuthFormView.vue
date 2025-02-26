@@ -11,12 +11,12 @@ const authStore = useAuthStore()
 const props = defineProps({
   mode: {
     type: String,
-    required: true
-  }
+    required: true,
+  },
 })
 const formData = ref({
   email: '',
-  password: ''
+  password: '',
 })
 const error = ref('')
 
@@ -24,7 +24,7 @@ const handleLogin = async () => {
   console.log(1)
   await axios
     .post('https://reqres.in/api/login', {
-      ...formData.value
+      ...formData.value,
     })
     .then((response) => {
       authStore.setToken(response.data.token)
@@ -38,7 +38,7 @@ const handleRegister = async () => {
   console.log(2)
   await axios
     .post('https://reqres.in/api/register', {
-      ...formData.value
+      ...formData.value,
     })
     .then((response) => {
       authStore.setToken(response.data.token)
@@ -62,26 +62,36 @@ const handleSubmit = () => {
 
 <template>
   <div class="flex items-center justify-center min-h-screen bg-background">
-    <form @submit.prevent="handleSubmit" class="bg-white rounded-2xl w-[30rem] border border-border overflow-hidden">
-      <RouterLink to="/"
-        class="flex items-center justify-between px-10 py-3 text-white bg-accent-blue hover:bg-accent-blue-light hover:text-text-primary transition-all duration-300">
+    <form
+      @submit.prevent="handleSubmit"
+      class="bg-white rounded-2xl w-[30rem] border border-border overflow-hidden"
+    >
+      <RouterLink
+        to="/"
+        class="flex items-center justify-between px-10 py-3 text-white bg-accent-blue hover:bg-accent-blue-light hover:text-text-primary transition-all duration-300"
+      >
         <Svg name="logo" class="size-9" />
-        <h4 class="text-xl font-semibold uppercase">
-          Bikes API
-        </h4>
+        <h4 class="text-xl font-semibold uppercase">Bikes API</h4>
       </RouterLink>
 
-      <input type="email"
+      <input
+        type="email"
         class="form-control border border-border-light w-full m-7 mb-1 px-4 py-2 rounded-2xl bg-transparent text-text-primary focus:outline-none"
-        v-model="formData.email" placeholder="Introduce tu correo" />
-      <input type="password"
+        v-model="formData.email"
+        placeholder="Introduce tu correo"
+      />
+      <input
+        type="password"
         class="form-control border border-border-light w-full m-7 mt-1 px-4 py-2 rounded-2xl bg-transparent text-text-primary focus:outline-none"
-        v-model="formData.password" placeholder="Introduce tu contraseña" />
+        v-model="formData.password"
+        placeholder="Introduce tu contraseña"
+      />
 
       <div class="mx-7 flex items-center mb-7 gap-2">
         <button
-        type="submit"
-          class="bg-accent-blue hover:bg-accent-blue-light hover:text-accent-blue transition duration-300 rounded-full py-1 px-4 text-white">
+          type="submit"
+          class="bg-accent-blue hover:bg-accent-blue-light hover:text-accent-blue transition duration-300 rounded-full py-1 px-4 text-white"
+        >
           {{ props.mode == 'login' ? 'Iniciar sesión' : 'Registrarse' }}
         </button>
         <p v-if="error" class="font-light text-accent-orange">Error: {{ error }}</p>
