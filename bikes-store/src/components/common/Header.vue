@@ -3,6 +3,7 @@ import { onMounted, onUnmounted, ref } from 'vue'
 
 import Svg from '@/components/common/Svg.vue'
 import SearchBar from '@/components/common/SearchBar.vue'
+import { useAuthStore } from '@/stores/auth.js'
 
 defineProps({
   isAbsolute: {
@@ -12,6 +13,11 @@ defineProps({
 })
 const isMobileMenuOpen = ref(false)
 const headerRef = ref(null)
+const authStore = useAuthStore()
+
+const handleLogout = () => {
+  authStore.clearToken()
+}
 
 const handleClickOutside = (event) => {
   if (headerRef.value && !headerRef.value.contains(event.target)) {
@@ -71,16 +77,12 @@ onUnmounted(() => {
         <SearchBar />
 
         <div class="hidden lg:block">
-          <div v-if="false === true">
-            <RouterLink
-              :to="{ name: 'home' }"
-              class="hover:text-accent-blue-light transition duration-300 me-4"
-              >Cerrar sesión
-            </RouterLink>
-          </div>
+          <button v-if="authStore.token" @click="handleLogout"  class="hover:text-accent-blue-light transition duration-300 me-4"
+            >Cerrar sesión
+          </button>
           <div v-else>
             <RouterLink
-              :to="{ name: 'home' }"
+              :to="{ name: 'login' }"
               class="transition duration-300"
               :class="{
                 'hover:text-accent-blue-light': isAbsolute,
@@ -88,7 +90,7 @@ onUnmounted(() => {
               }"
               >Iniciar sesión
             </RouterLink>
-            <RouterLink :to="{ name: 'home' }">
+            <RouterLink :to="{ name: 'register' }">
               <button
                 class="whitespace-nowrap bg-accent-blue hover:bg-accent-blue-light hover:text-accent-blue transition duration-300 rounded-full py-1 px-4 ms-3"
                 :class="{ 'text-white': !isAbsolute }"
@@ -111,20 +113,20 @@ onUnmounted(() => {
           <span class="font-semibold">Encuentra</span> tu moto
         </RouterLink>
         <div class="border-t border-accent-blue-light pt-3">
-          <RouterLink
-            v-if="false === false"
-            :to="{ name: 'home' }"
+          <button
+            v-if="authStore.token"
+            @click="handleLogout"
             class="hover:text-accent-orange transition duration-300"
             >Cerrar sesión
-          </RouterLink>
+          </button>
           <div v-else class="flex justify-between items-center">
             <RouterLink
-              :to="{ name: 'home' }"
+              :to="{ name: 'login' }"
               class="hover:text-accent-orange transition duration-300"
               >Iniciar sesión
             </RouterLink>
             <RouterLink
-              :to="{ name: 'home' }"
+              :to="{ name: 'register' }"
               class="hover:text-accent-orange transition duration-300"
               >Registrarse
             </RouterLink>
