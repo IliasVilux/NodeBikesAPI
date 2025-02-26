@@ -25,7 +25,7 @@ const connection = await mysql.createConnection(connectionString)
 export class BikeModel {
   static async getAll ({ marca, categoria, search, cilindrada, orderBy }) {
     let query = `
-      SELECT bike.* 
+      SELECT bike.*, bike_images.image_url 
       FROM bike
       JOIN brand ON bike.brand_id = brand.id
       LEFT JOIN bike_images ON bike.id = bike_images.bike_id AND bike_images.is_main = true

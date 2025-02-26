@@ -27,7 +27,6 @@ CREATE TABLE bike (
     id CHAR(36) PRIMARY KEY DEFAULT(UUID()),
     name VARCHAR(255) NOT NULL,
     year INT NOT NULL,
-    poster TEXT,
     engine_capacity INT NOT NULL,
     brand_id INT,
     category_id INT,
@@ -61,11 +60,11 @@ INSERT INTO category (name) VALUES
 -- Insertar motos para cada categoría con cilindradas variadas
 
 -- Racing
-INSERT INTO bike (id, name, year, poster, engine_capacity, brand_id, category_id) 
+INSERT INTO bike (id, name, year, engine_capacity, brand_id, category_id) 
 VALUES 
-(UUID(), 'YZF-R1', 2023, 'https://example.com/images/yamaha_r1.jpg', 998, (SELECT id FROM brand WHERE name = 'Yamaha'), (SELECT id FROM category WHERE name = 'Racing')),
-(UUID(), 'Ninja ZX-10R', 2023, 'https://example.com/images/kawasaki_zx10r.jpg', 998, (SELECT id FROM brand WHERE name = 'Kawasaki'), (SELECT id FROM category WHERE name = 'Racing')),
-(UUID(), 'CBR1000RR-R', 2023, 'https://example.com/images/honda_cbr1000rrr.jpg', 1000, (SELECT id FROM brand WHERE name = 'Honda'), (SELECT id FROM category WHERE name = 'Racing'));
+(UUID(), 'YZF-R1', 2023, 998, (SELECT id FROM brand WHERE name = 'Yamaha'), (SELECT id FROM category WHERE name = 'Racing')),
+(UUID(), 'Ninja ZX-10R', 2023, 998, (SELECT id FROM brand WHERE name = 'Kawasaki'), (SELECT id FROM category WHERE name = 'Racing')),
+(UUID(), 'CBR1000RR-R', 2023, 1000, (SELECT id FROM brand WHERE name = 'Honda'), (SELECT id FROM category WHERE name = 'Racing'));
 -- (UUID(), 'GSX-R1000', 2023, 'https://example.com/images/suzuki_gsxr1000.jpg', 999, (SELECT id FROM brand WHERE name = 'Suzuki'), (SELECT id FROM category WHERE name = 'Racing')),
 -- (UUID(), 'Panigale V4', 2023, 'https://example.com/images/ducati_panigale_v4.jpg', 1103, (SELECT id FROM brand WHERE name = 'Ducati'), (SELECT id FROM category WHERE name = 'Racing')),
 -- (UUID(), 'KTM RC 390', 2022, 'https://example.com/images/ktm_rc390.jpg', 373, (SELECT id FROM brand WHERE name = 'KTM'), (SELECT id FROM category WHERE name = 'Racing')),
@@ -75,11 +74,11 @@ VALUES
 -- (UUID(), 'Kawasaki Ninja 400', 2023, 'https://example.com/images/kawasaki_ninja400.jpg', 399, (SELECT id FROM brand WHERE name = 'Kawasaki'), (SELECT id FROM category WHERE name = 'Racing'));
 
 -- Trail
-INSERT INTO bike (id, name, year, poster, engine_capacity, brand_id, category_id) 
+INSERT INTO bike (id, name, year, engine_capacity, brand_id, category_id) 
 VALUES 
-(UUID(), 'CRF250L', 2020, 'https://example.com/images/honda_crf250l.jpg', 249, (SELECT id FROM brand WHERE name = 'Honda'), (SELECT id FROM category WHERE name = 'Trail')),
-(UUID(), '390 Adventure', 2021, 'https://example.com/images/ktm_390_adventure.jpg', 373, (SELECT id FROM brand WHERE name = 'KTM'), (SELECT id FROM category WHERE name = 'Trail')),
-(UUID(), 'Tenere 700', 2023, 'https://example.com/images/yamaha_tenere700.jpg', 689, (SELECT id FROM brand WHERE name = 'Yamaha'), (SELECT id FROM category WHERE name = 'Trail'));
+(UUID(), 'CRF250L', 2020, 249, (SELECT id FROM brand WHERE name = 'Honda'), (SELECT id FROM category WHERE name = 'Trail')),
+(UUID(), '390 Adventure', 2021, 373, (SELECT id FROM brand WHERE name = 'KTM'), (SELECT id FROM category WHERE name = 'Trail')),
+(UUID(), 'Tenere 700', 2023, 689, (SELECT id FROM brand WHERE name = 'Yamaha'), (SELECT id FROM category WHERE name = 'Trail'));
 -- (UUID(), 'BMW G 310 GS', 2023, 'https://example.com/images/bmw_g310gs.jpg', 313, (SELECT id FROM brand WHERE name = 'BMW'), (SELECT id FROM category WHERE name = 'Trail')),
 -- (UUID(), 'Suzuki V-Strom 650', 2022, 'https://example.com/images/suzuki_vstrom_650.jpg', 645, (SELECT id FROM brand WHERE name = 'Suzuki'), (SELECT id FROM category WHERE name = 'Trail')),
 -- (UUID(), 'Honda CRF1100L Africa Twin', 2021, 'https://example.com/images/honda_africa_twin.jpg', 1084, (SELECT id FROM brand WHERE name = 'Honda'), (SELECT id FROM category WHERE name = 'Trail')),
@@ -89,11 +88,11 @@ VALUES
 -- (UUID(), 'BMW F 750 GS', 2022, 'https://example.com/images/bmw_f750gs.jpg', 853, (SELECT id FROM brand WHERE name = 'BMW'), (SELECT id FROM category WHERE name = 'Trail'));
 
 -- Naked
-INSERT INTO bike (id, name, year, poster, engine_capacity, brand_id, category_id) 
+INSERT INTO bike (id, name, year, engine_capacity, brand_id, category_id) 
 VALUES 
-(UUID(), 'MT-03', 2023, 'https://example.com/images/yamaha_mt03.jpg', 321, (SELECT id FROM brand WHERE name = 'Yamaha'), (SELECT id FROM category WHERE name = 'Naked')),
-(UUID(), 'Z400', 2022, 'https://example.com/images/kawasaki_z400.jpg', 399, (SELECT id FROM brand WHERE name = 'Kawasaki'), (SELECT id FROM category WHERE name = 'Naked')),
-(UUID(), 'CB500F', 2021, 'https://example.com/images/honda_cb500f.jpg', 471, (SELECT id FROM brand WHERE name = 'Honda'), (SELECT id FROM category WHERE name = 'Naked'));
+(UUID(), 'MT-03', 2023, 321, (SELECT id FROM brand WHERE name = 'Yamaha'), (SELECT id FROM category WHERE name = 'Naked')),
+(UUID(), 'Z400', 2022, 399, (SELECT id FROM brand WHERE name = 'Kawasaki'), (SELECT id FROM category WHERE name = 'Naked')),
+(UUID(), 'CB500F', 2021, 471, (SELECT id FROM brand WHERE name = 'Honda'), (SELECT id FROM category WHERE name = 'Naked'));
 -- (UUID(), 'Suzuki GSX-S750', 2022, 'https://example.com/images/suzuki_gsx_s750.jpg', 749, (SELECT id FROM brand WHERE name = 'Suzuki'), (SELECT id FROM category WHERE name = 'Naked')),
 -- (UUID(), 'BMW F 900 R', 2023, 'https://example.com/images/bmw_f900r.jpg', 895, (SELECT id FROM brand WHERE name = 'BMW'), (SELECT id FROM category WHERE name = 'Naked')),
 -- (UUID(), 'KTM 890 Duke', 2021, 'https://example.com/images/ktm_890duke.jpg', 889, (SELECT id FROM brand WHERE name = 'KTM'), (SELECT id FROM category WHERE name = 'Naked')),
@@ -103,11 +102,11 @@ VALUES
 -- (UUID(), 'Honda CB650R', 2021, 'https://example.com/images/honda_cb650r.jpg', 649, (SELECT id FROM brand WHERE name = 'Honda'), (SELECT id FROM category WHERE name = 'Naked'));
 
 -- Sport-Touring
-INSERT INTO bike (id, name, year, poster, engine_capacity, brand_id, category_id) 
+INSERT INTO bike (id, name, year, engine_capacity, brand_id, category_id) 
 VALUES
-(UUID(), 'R 1250 RT', 2022, 'https://example.com/images/bmw_r1250rt.jpg', 1254, (SELECT id FROM brand WHERE name = 'BMW'), (SELECT id FROM category WHERE name = 'Sport-Touring')),
-(UUID(), 'VFR800X Crossrunner', 2020, 'https://example.com/images/honda_vfr800x.jpg', 782, (SELECT id FROM brand WHERE name = 'Honda'), (SELECT id FROM category WHERE name = 'Sport-Touring')),
-(UUID(), 'Multistrada 950', 2021, 'https://example.com/images/ducati_multistrada950.jpg', 937, (SELECT id FROM brand WHERE name = 'Ducati'), (SELECT id FROM category WHERE name = 'Sport-Touring'));
+(UUID(), 'R 1250 RT', 2022, 1254, (SELECT id FROM brand WHERE name = 'BMW'), (SELECT id FROM category WHERE name = 'Sport-Touring')),
+(UUID(), 'VFR800X Crossrunner', 2020, 782, (SELECT id FROM brand WHERE name = 'Honda'), (SELECT id FROM category WHERE name = 'Sport-Touring')),
+(UUID(), 'Multistrada 950', 2021, 937, (SELECT id FROM brand WHERE name = 'Ducati'), (SELECT id FROM category WHERE name = 'Sport-Touring'));
 -- (UUID(), 'Triumph Tiger 900', 2023, 'https://example.com/images/triumph_tiger900.jpg', 888, (SELECT id FROM brand WHERE name = 'Triumph'), (SELECT id FROM category WHERE name = 'Sport-Touring')),
 -- (UUID(), 'KTM 1290 Super Duke GT', 2020, 'https://example.com/images/ktm_1290_superduke.jpg', 1301, (SELECT id FROM brand WHERE name = 'KTM'), (SELECT id FROM category WHERE name = 'Sport-Touring')),
 -- (UUID(), 'Yamaha FJR1300', 2022, 'https://example.com/images/yamaha_fjr1300.jpg', 1298, (SELECT id FROM brand WHERE name = 'Yamaha'), (SELECT id FROM category WHERE name = 'Sport-Touring')),
@@ -116,11 +115,11 @@ VALUES
 -- (UUID(), 'Suzuki GSX-S1000F', 2022, 'https://example.com/images/suzuki_gsx_s1000f.jpg', 999, (SELECT id FROM brand WHERE name = 'Suzuki'), (SELECT id FROM category WHERE name = 'Sport-Touring'));
 
 -- Maxi-Scooter
-INSERT INTO bike (id, name, year, poster, engine_capacity, brand_id, category_id) 
+INSERT INTO bike (id, name, year, engine_capacity, brand_id, category_id) 
 VALUES 
-(UUID(), 'TMAX 560', 2023, 'https://example.com/images/yamaha_TMAX.jpg', 562, (SELECT id FROM brand WHERE name = 'Yamaha'), (SELECT id FROM category WHERE name = 'Maxi-Scooter')),
-(UUID(), 'Forza 350', 2022, 'https://example.com/images/honda_forza350.jpg', 350, (SELECT id FROM brand WHERE name = 'Honda'), (SELECT id FROM category WHERE name = 'Maxi-Scooter')),
-(UUID(), 'Burgman 650', 2021, 'https://example.com/images/suzuki_burgman.jpg', 638, (SELECT id FROM brand WHERE name = 'Suzuki'), (SELECT id FROM category WHERE name = 'Maxi-Scooter'));
+(UUID(), 'TMAX 560', 2023, 562, (SELECT id FROM brand WHERE name = 'Yamaha'), (SELECT id FROM category WHERE name = 'Maxi-Scooter')),
+(UUID(), 'Forza 350', 2022, 350, (SELECT id FROM brand WHERE name = 'Honda'), (SELECT id FROM category WHERE name = 'Maxi-Scooter')),
+(UUID(), 'Burgman 650', 2021, 638, (SELECT id FROM brand WHERE name = 'Suzuki'), (SELECT id FROM category WHERE name = 'Maxi-Scooter'));
 -- (UUID(), 'BMW C 400 X', 2023, 'https://example.com/images/bmw_c400x.jpg', 350, (SELECT id FROM brand WHERE name = 'BMW'), (SELECT id FROM category WHERE name = 'Maxi-Scooter')),
 -- (UUID(), 'Kymco AK 550', 2022, 'https://example.com/images/kymco_ak550.jpg', 550, (SELECT id FROM brand WHERE name = 'Kymco'), (SELECT id FROM category WHERE name = 'Maxi-Scooter')),
 -- (UUID(), 'Yamaha XMAX 300', 2023, 'https://example.com/images/yamaha_xmax.jpg', 292, (SELECT id FROM brand WHERE name = 'Yamaha'), (SELECT id FROM category WHERE name = 'Maxi-Scooter')),
@@ -130,10 +129,10 @@ VALUES
 -- (UUID(), 'Peugeot Metropolis 400', 2023, 'https://example.com/images/peugeot_metropolis.jpg', 400, (SELECT id FROM brand WHERE name = 'Peugeot'), (SELECT id FROM category WHERE name = 'Maxi-Scooter'));
 
 -- Custom
-INSERT INTO bike (id, name, year, poster, engine_capacity, brand_id, category_id) 
+INSERT INTO bike (id, name, year, engine_capacity, brand_id, category_id) 
 VALUES 
-(UUID(), 'Iron 883', 2023, 'https://example.com/images/harley_iron883.jpg', 883, (SELECT id FROM brand WHERE name = 'Harley-Davidson'), (SELECT id FROM category WHERE name = 'Custom')),
-(UUID(), 'Scrambler 800', 2021, 'https://example.com/images/ducati_scrambler_800.jpg', 803, (SELECT id FROM brand WHERE name = 'Ducati'), (SELECT id FROM category WHERE name = 'Custom'));
+(UUID(), 'Iron 883', 2023, 883, (SELECT id FROM brand WHERE name = 'Harley-Davidson'), (SELECT id FROM category WHERE name = 'Custom')),
+(UUID(), 'Scrambler 800', 2021, 803, (SELECT id FROM brand WHERE name = 'Ducati'), (SELECT id FROM category WHERE name = 'Custom'));
 -- (UUID(), 'Triumph Bonneville T120', 2022, 'https://example.com/images/triumph_bonneville_t120.jpg', 1200, (SELECT id FROM brand WHERE name = 'Triumph'), (SELECT id FROM category WHERE name = 'Custom')),
 -- (UUID(), 'Harley-Davidson Forty-Eight', 2023, 'https://example.com/images/harley_fortyeight.jpg', 1200, (SELECT id FROM brand WHERE name = 'Harley-Davidson'), (SELECT id FROM category WHERE name = 'Custom')),
 -- (UUID(), 'BMW R NineT', 2022, 'https://example.com/images/bmw_r9t.jpg', 1170, (SELECT id FROM brand WHERE name = 'BMW'), (SELECT id FROM category WHERE name = 'Custom')),
