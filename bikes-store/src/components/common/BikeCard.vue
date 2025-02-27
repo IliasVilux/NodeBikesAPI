@@ -41,15 +41,15 @@ onMounted(fetchData)
 
     <RouterLink :to="{ name: 'detail', params: { id: bike.id } }">
       <img
-        src=""
+        :src="bike.image_url"
         :alt="'Imagen de la moto ' + brand + ' ' + bike.name"
-        class="w-full flex-grow bg-[#D9D9D9] object-cover aspect-[4/3] -mt-1"
+        class="w-full flex-grow bg-[#D9D9D9] object-cover aspect-[4/3]"
       />
       <div class="mt-auto px-4 py-2 transition duration-300 group-hover:text-accent-blue">
         <p class="text-sm font-light text-text-secondary">
           {{ bike.year }} | {{ bike.engine_capacity }}
         </p>
-        <h4 class="pb-7 text-xl font-semibold">{{ bike.name }}</h4>
+        <h4 class="pb-4 text-xl font-semibold">{{ bike.name }}</h4>
       </div>
     </RouterLink>
   </div>
