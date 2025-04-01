@@ -103,6 +103,12 @@ export class BikeModel {
     return bike[0]
   }
 
+  static async getImages ({ id }) {
+    const [images] = await connection.query('SELECT * FROM bike_images WHERE bike_id = ?;', [id])
+    if (!images.length) return null
+    return images[0]
+  }
+
   static async create ({ input }) {
     const {
       name,

@@ -12,5 +12,7 @@ export const createBikeRouter = ({ bikeModel }) => {
   bikesRouter.delete('/:id', bikeController.delete)
   bikesRouter.patch('/:id', bikeController.update)
 
+  bikesRouter.get('/:id/images', bikeController.getById)
+
   return bikesRouter
 }

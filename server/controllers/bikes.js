@@ -20,6 +20,15 @@ export class BikeController {
     res.status(404).json({ message: 'No se ha encontrado esta moto.' })
   }
 
+  getImages = async (req, res) => {
+    const { id } = req.params
+    const images = await this.bikeModel.getImages({ id })
+
+    if (images) return res.json(images)
+
+    res.status(404).json({ message: 'No se han encontrado imagenes de esta moto.' })
+  }
+
   create = async (req, res) => {
     const result = validateBike(req.body)
 
