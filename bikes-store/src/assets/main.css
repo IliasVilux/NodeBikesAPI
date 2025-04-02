@@ -6,3 +6,17 @@ body {
   @apply bg-background;
   @apply text-text-primary;
 }
+
+:root{
+  --swiper-navigation-size: 20px !important;
+  --swiper-navigation-color: #F59E0B !important;
+}
+
+.swiper-button-prev, .swiper-button-next {
+  background-color: white;
+  border-radius: 9999px;
+  width: 40px !important;
+  height: 40px !important;
+  padding: 1rem;
+  @apply border border-border-light;
+}
