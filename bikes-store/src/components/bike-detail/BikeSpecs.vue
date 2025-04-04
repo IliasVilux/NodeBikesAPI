@@ -1,7 +1,6 @@
 <script setup>
 import axios from 'axios'
 import { onMounted, ref } from 'vue'
-import { RouterLink } from 'vue-router'
 
 const props = defineProps({
   bike: {
@@ -35,9 +34,7 @@ onMounted(fetchData)
 <template>
   <div v-if="brand && category" class="w-full bg-white border-y border-border-light my-20">
     <section class="max-w-screen-2xl mx-auto px-4 py-12">
-      <h4 class="text-xl font-semibold">
-        DETALLES DE LA MOTO
-      </h4>
+      <h4 class="text-xl font-semibold">DETALLES DE LA MOTO</h4>
       <p class="mt-4 mb-12">
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aspernatur, veniam eaque. Iste
         assumenda ipsam officiis et sint quasi perspiciatis omnis nisi. Optio laudantium vitae

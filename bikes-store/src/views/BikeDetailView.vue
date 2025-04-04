@@ -20,7 +20,9 @@ const fetchData = async () => {
   loading.value = true
   try {
     const responseBike = await axios.get(`${import.meta.env.VITE_API_URL}/motos/${route.params.id}`)
-    const responseImages = await axios.get(`${import.meta.env.VITE_API_URL}/motos/${route.params.id}/images`)
+    const responseImages = await axios.get(
+      `${import.meta.env.VITE_API_URL}/motos/${route.params.id}/images`,
+    )
     bike.value.bike = responseBike.data
     bike.value.images = responseImages.data
   } catch (err) {
@@ -40,7 +42,7 @@ onMounted(fetchData)
   <div v-else-if="error">Error: {{ error.message }}</div>
   <div v-else>
     <!-- IMAGE CAROUSEL -->
-    <ImageCarousel v-if="bike.images" :images="bike.images"/>
+    <ImageCarousel v-if="bike.images" :images="bike.images" />
 
     <!-- BIKE SPECS -->
     <BikeSpecs v-if="bike.bike" :bike="bike.bike" />
