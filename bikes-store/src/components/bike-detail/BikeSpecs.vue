@@ -47,7 +47,7 @@ onMounted(fetchData)
         </div>
         <div class="flex items-center px-3 border-e-2 border-border-light h-4">
           <p class="uppercase mr-4">Marca</p>
-          <p class="font-bold">Yamaha</p>
+          <p class="font-bold">{{ brand }}</p>
         </div>
         <div class="flex items-center px-3 border-e-2 border-border-light h-4">
           <p class="uppercase mr-4">Modelo</p>
