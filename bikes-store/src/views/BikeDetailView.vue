@@ -43,7 +43,7 @@ onMounted(fetchData)
     <ImageCarousel v-if="bike.images" :images="bike.images"/>
 
     <!-- BIKE SPECS -->
-    <BikeSpecs />
+    <BikeSpecs v-if="bike.bike" :bike="bike.bike" />
   </div>
   <Footer />
 </template>
