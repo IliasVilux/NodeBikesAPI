@@ -5,6 +5,10 @@ export class BikeController {
     this.bikeModel = bikeModel
   }
 
+  findBikeById = async (id) => {
+    return await this.bikeModel.getById({ id })
+  }
+
   getAll = async (req, res) => {
     const { marca, categoria, search, cilindrada, order_by: orderBy } = req.query
     const bikes = await this.bikeModel.getAll({ marca, categoria, search, cilindrada, orderBy })
@@ -13,7 +17,7 @@ export class BikeController {
 
   getById = async (req, res) => {
     const { id } = req.params
-    const bike = await this.bikeModel.getById({ id })
+    const bike = await this.findBikeById(id)
 
     if (bike) return res.json(bike)
 
@@ -27,6 +31,22 @@ export class BikeController {
     if (images) return res.json(images)
 
     res.status(404).json({ message: 'No se han encontrado imagenes de esta moto.' })
+  }
+
+  getRelated = async (req, res) => {
+    const { id } = req.params
+    const bike = await this.findBikeById(id)
+
+    if (bike) {
+      return res.json(this.bikeModel.getRelated({
+        id,
+        brandId: bike.brand_id,
+        categoryId: bike.category_id,
+        engineCapacity: bike.engine_capacity
+      }))
+    }
+
+    res.status(404).json({ message: 'Moto no encontrada.' })
   }
 
   create = async (req, res) => {

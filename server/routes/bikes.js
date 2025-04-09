@@ -14,5 +14,7 @@ export const createBikeRouter = ({ bikeModel }) => {
 
   bikesRouter.get('/:id/images', bikeController.getImages)
 
+  bikesRouter.get('/:id/related', bikeController.getRelated)
+
   return bikesRouter
 }

@@ -109,6 +109,35 @@ export class BikeModel {
     return images
   }
 
+  static async getRelated ({ id, brandId, categoryId, engineCapacity }) {
+    const [relatedBikes] = await connection.query(`
+    SELECT bike.*, bike_images.image_url
+    FROM bike
+    LEFT JOIN bike_images ON bike.id = bike_images.bike_id AND bike_images.is_main = true
+    WHERE bike.id <> ?
+      AND (
+        bike.brand_id = ?
+        OR bike.category_id = ?
+        OR ABS(bike.engine_capacity - ?) <= 50
+      )
+    ORDER BY 
+      bike.brand_id = ? DESC,
+      bike.category_id = ? DESC,
+      ABS(bike.engine_capacity - ?) ASC
+    LIMIT 4;
+  `, [
+      id,
+      brandId,
+      categoryId,
+      engineCapacity,
+      brandId,
+      categoryId,
+      engineCapacity
+    ])
+
+    return relatedBikes
+  }
+
   static async create ({ input }) {
     const {
       name,
