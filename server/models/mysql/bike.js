@@ -110,32 +110,27 @@ export class BikeModel {
   }
 
   static async getRelated ({ id, brandId, categoryId, engineCapacity }) {
-    const [relatedBikes] = await connection.query(`
-    SELECT bike.*, bike_images.image_url
-    FROM bike
-    LEFT JOIN bike_images ON bike.id = bike_images.bike_id AND bike_images.is_main = true
-    WHERE bike.id <> ?
-      AND (
-        bike.brand_id = ?
-        OR bike.category_id = ?
-        OR ABS(bike.engine_capacity - ?) <= 50
-      )
-    ORDER BY 
-      bike.brand_id = ? DESC,
-      bike.category_id = ? DESC,
-      ABS(bike.engine_capacity - ?) ASC
-    LIMIT 4;
-  `, [
-      id,
-      brandId,
-      categoryId,
-      engineCapacity,
-      brandId,
-      categoryId,
-      engineCapacity
-    ])
+    try {
+      const [relatedBikes] = await connection.query(`
+        SELECT bike.*,
+        bike_images.image_url AS main_image
+        (
+          (CASE WHEN bike.category_id = ? THEN 3 ELSE 0 END) +
+          (CASE WHEN ABS(bike.engine_capacity - ?) <   = 50 THEN 2 ELSE 0 END) +
+          (CASE WHEN bike.brand_id = ? THEN 1 ELSE 0 END)
+        )
+          FROM bike
+          LEFT JOIN bike_images ON bike_images.bike_id = bike.id AND bike_images.is_main = TRUE
+          WHERE bike.id != ?
+          ORDER BY relevance DESC
+          LIMIT 10
+      `, [categoryId, engineCapacity, brandId, id])
 
-    return relatedBikes
+      return relatedBikes
+    } catch (error) {
+      console.log(error)
+      throw new Error('No se han podido recoger motos similares.')
+    }
   }
 
   static async create ({ input }) {

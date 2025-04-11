@@ -9,12 +9,10 @@ export const createBikeRouter = ({ bikeModel }) => {
   bikesRouter.post('/', bikeController.create)
 
   bikesRouter.get('/:id', bikeController.getById)
+  bikesRouter.get('/:id/images', bikeController.getImages)
+  bikesRouter.get('/:id/related', bikeController.getRelated)
   bikesRouter.delete('/:id', bikeController.delete)
   bikesRouter.patch('/:id', bikeController.update)
-
-  bikesRouter.get('/:id/images', bikeController.getImages)
-
-  bikesRouter.get('/:id/related', bikeController.getRelated)
 
   return bikesRouter
 }
