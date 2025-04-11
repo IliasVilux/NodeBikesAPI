@@ -41,8 +41,6 @@ export class BikeController {
       return res.status(404).json({ message: 'Moto no encontrada.' })
     }
 
-    if (bike) return res.json(bike)
-
     const relatedBikes = await this.bikeModel.getRelated({
       id,
       brandId: bike.brand_id,
