@@ -112,23 +112,24 @@ export class BikeModel {
   static async getRelated ({ id, brandId, categoryId, engineCapacity }) {
     try {
       const [relatedBikes] = await connection.query(`
-        SELECT bike.*,
-        bike_images.image_url AS main_image,
-        (
-          (CASE WHEN bike.category_id = ? THEN 3 ELSE 0 END) +
-          (CASE WHEN ABS(bike.engine_capacity - ?) <   = 50 THEN 2 ELSE 0 END) +
-          (CASE WHEN bike.brand_id = ? THEN 1 ELSE 0 END)
-        )
-          FROM bike
-          LEFT JOIN bike_images ON bike_images.bike_id = bike.id AND bike_images.is_main = TRUE
-          WHERE bike.id != ?
-          ORDER BY relevance DESC
-          LIMIT 10
+        SELECT 
+          b.*,
+          bi.image_url AS main_image,
+          (
+            (CASE WHEN b.category_id = ? THEN 3 ELSE 0 END) +
+            (CASE WHEN ABS(b.engine_capacity - ?) <= 50 THEN 2 ELSE 0 END) +
+            (CASE WHEN b.brand_id = ? THEN 1 ELSE 0 END)
+          ) AS relevance
+        FROM bike b
+        LEFT JOIN bike_images bi ON bi.bike_id = b.id AND bi.is_main = TRUE
+        WHERE b.id != ?
+        ORDER BY relevance DESC
+        LIMIT 5
       `, [categoryId, engineCapacity, brandId, id])
 
       return relatedBikes
     } catch (error) {
-      console.log(error)
+      console.error('[getRelated] Error:', error)
       throw new Error('No se han podido recoger motos similares.')
     }
   }
