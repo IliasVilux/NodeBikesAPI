@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import axios from 'axios'
 
@@ -8,7 +8,7 @@ import Header from '@/components/common/Header.vue'
 import Footer from '@/components/common/Footer.vue'
 import ImageCarousel from '@/components/bike-detail/ImageCarousel.vue'
 import BikeSpecs from '@/components/bike-detail/BikeSpecs.vue'
-//import BikeCard from '@/components/common/BikeCard.vue'
+import RelatedBikes from '@/components/bike-detail/RelatedBikes.vue'
 
 const route = useRoute()
 
@@ -33,6 +33,7 @@ const fetchData = async () => {
 }
 
 onMounted(fetchData)
+watch(() => route.params.id, fetchData)
 </script>
 
 <template>
@@ -40,12 +41,15 @@ onMounted(fetchData)
   <Header />
   <div v-if="loading">Loading...</div>
   <div v-else-if="error">Error: {{ error.message }}</div>
-  <div v-else>
+  <div v-else-if="bike && bike.bike && bike.images">
     <!-- IMAGE CAROUSEL -->
-    <ImageCarousel v-if="bike.images" :images="bike.images" />
+    <ImageCarousel :images="bike.images" />
 
     <!-- BIKE SPECS -->
-    <BikeSpecs v-if="bike.bike" :bike="bike.bike" />
+    <BikeSpecs :bike="bike.bike" />
+
+    <!-- RELATED BIKES -->
+    <RelatedBikes :bikeId="bike.bike.id" />
   </div>
   <Footer />
 </template>
