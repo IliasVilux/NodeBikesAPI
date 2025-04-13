@@ -114,7 +114,7 @@ export class BikeModel {
       const [relatedBikes] = await connection.query(`
         SELECT 
           b.*,
-          bi.image_url AS main_image,
+          bi.image_url,
           (
             (CASE WHEN b.category_id = ? THEN 3 ELSE 0 END) +
             (CASE WHEN ABS(b.engine_capacity - ?) <= 50 THEN 2 ELSE 0 END) +
