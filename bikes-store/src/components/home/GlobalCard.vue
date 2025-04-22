@@ -15,7 +15,7 @@ const { item, type } = defineProps({
 })
 
 const getImagePath = (name, category) => {
-  return new URL(`/src/assets/images/${category}/${name.toLowerCase()}.png`, import.meta.url).href
+  return `/images/${category}/${name.toLowerCase()}.png`
 }
 
 const getLink = () => {

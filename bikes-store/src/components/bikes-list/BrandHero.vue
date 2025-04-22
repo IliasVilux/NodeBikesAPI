@@ -33,7 +33,7 @@ onMounted(fetchData)
         class="flex items-center bg-white px-20 rounded-full hover:-translate-y-1 border hover:border-accent-blue transition duration-300"
       >
         <img
-          :src="`/src/assets/images/brand/${brand.name}.png`"
+          :src="`/images/brand/${brand.name}.png`"
           :alt="brand.name"
           class="size-14 object-contain"
         />
