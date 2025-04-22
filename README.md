@@ -68,3 +68,23 @@ npm run dev
 ```
 
 La app se abre en `http://localhost:5173`.
+
+---
+
+## 🔐 Variables de entorno
+
+### 📦 Backend `(/server)`
+
+```js
+DB_HOST=tu_host_de_base_de_datos
+DB_USER=tu_usuario
+DB_PASSWORD=tu_contraseña
+DB_NAME=nombre_de_tu_base
+DB_PORT=puerto_de_tu_base
+```
+
+### 🖼️ Frontend `(/bikes-store)`
+
+```js
+VITE_API_URL=http://url.com
+```
